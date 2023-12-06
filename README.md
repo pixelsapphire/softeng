@@ -11,4 +11,4 @@ Dla osób pracujących z danymi tekstowymi nasza aplikacja Text Transformer umo�
 - Alex Pawelski (147412)
 - Stanisław Puzio (151886)
 
-[IO-Scrum](https://docs.google.com/spreadsheets/d/1vGzwlkJ8P-yKGuXi-MQwKefOzHE9fn1R9GUHxYvz5JE/edit?usp=sharing)
+[Backlog (arkusz Google Sheets)](https://docs.google.com/spreadsheets/d/1vGzwlkJ8P-yKGuXi-MQwKefOzHE9fn1R9GUHxYvz5JE/edit?usp=sharing)
