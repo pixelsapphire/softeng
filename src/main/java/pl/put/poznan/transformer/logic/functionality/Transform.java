@@ -40,8 +40,8 @@ public class Transform extends TextTransformerDecorator {
 
             if (Character.isLetter(ss.charAt(0))) {
                 result.append(Character.toUpperCase(ss.charAt(0)))
-                        .append(ss.substring(1))
-                        .append(" ");
+                      .append(ss.substring(1))
+                      .append(" ");
             } else {
                 result.append(ss).append(" ");
             }

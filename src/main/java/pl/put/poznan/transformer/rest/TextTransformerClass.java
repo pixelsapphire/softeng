@@ -1,64 +1,63 @@
 package pl.put.poznan.transformer.rest;
 
-
 public class TextTransformerClass {
 
-	private String Transform;
-	private boolean Numbers;
-	private String Shortcuts;
-	private boolean LaTeX;
-	private boolean Neighbors;	
-	public TextTransformerClass() {
-		
-	}
-	
-	public TextTransformerClass(String Transform, boolean Numbers, 
-			String Shortcuts, boolean LaTeX, boolean Neighbors) {
-		super();
-		this.Transform = Transform;
-		this.Numbers = Numbers;
-		this.Shortcuts = Shortcuts;
-		this.LaTeX = LaTeX;
-		this.Neighbors = Neighbors;
-	}
-	
-	public String getBasicTransform() {
-		return Transform;
-	}
+    private String Transform;
+    private boolean Numbers;
+    private String Shortcuts;
+    private boolean LaTeX;
+    private boolean Neighbors;
 
-	public void setBasicTransform(String Transform) {
-		this.Transform = Transform;
-	}
+    public TextTransformerClass() {
+    }
 
-	public boolean isNumbers() {
-		return Numbers;
-	}
+    public TextTransformerClass(String Transform, boolean Numbers,
+                                String Shortcuts, boolean LaTeX, boolean Neighbors) {
+        super();
+        this.Transform = Transform;
+        this.Numbers = Numbers;
+        this.Shortcuts = Shortcuts;
+        this.LaTeX = LaTeX;
+        this.Neighbors = Neighbors;
+    }
 
-	public void setNumbers(boolean Numbers) {
-		this.Numbers = Numbers;
-	}
+    public String getBasicTransform() {
+        return Transform;
+    }
 
-	public String getShortcuts() {
-		return Shortcuts;
-	}
+    public void setBasicTransform(String Transform) {
+        this.Transform = Transform;
+    }
 
-	public void setShortcuts(String Shortcuts) {
-		this.Shortcuts = Shortcuts;
-	}
+    public boolean isNumbers() {
+        return Numbers;
+    }
 
-	public boolean isLatex() {
-		return LaTeX;
-	}
+    public void setNumbers(boolean Numbers) {
+        this.Numbers = Numbers;
+    }
 
-	public void setLatex(boolean LaTeX) {
-		this.LaTeX = LaTeX;
-	}
+    public String getShortcuts() {
+        return Shortcuts;
+    }
 
-	public boolean isNeighbors() {
-		return Neighbors;
-	}
+    public void setShortcuts(String Shortcuts) {
+        this.Shortcuts = Shortcuts;
+    }
 
-	public void setNeighbors(boolean Neighbors) {
-		this.Neighbors = Neighbors;
-	}	
+    public boolean isLatex() {
+        return LaTeX;
+    }
+
+    public void setLatex(boolean LaTeX) {
+        this.LaTeX = LaTeX;
+    }
+
+    public boolean isNeighbors() {
+        return Neighbors;
+    }
+
+    public void setNeighbors(boolean Neighbors) {
+        this.Neighbors = Neighbors;
+    }
 }

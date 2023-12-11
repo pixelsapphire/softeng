@@ -1,12 +1,13 @@
 package pl.put.poznan.transformer.logic.functionality;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ExpNum extends TextTransformerDecorator {
+
     private static final Map<Character, String> DIGIT_MAP = new HashMap<>();
     private static final Map<String, String> TEENS_MAP = new HashMap<>();
     private static final Map<Character, String> TENS_MAP = new HashMap<>();
@@ -68,6 +69,11 @@ public class ExpNum extends TextTransformerDecorator {
         this.numberExpandAllow = numberExpandAllow;
     }
 
+    @Override
+    public String transform() {
+        return function(textToTransform.transform());
+    }
+
     public String function(String s) {
         if (numberExpandAllow) {
             StringBuilder result = new StringBuilder();
@@ -124,10 +130,5 @@ public class ExpNum extends TextTransformerDecorator {
         }
 
         return result.toString();
-    }
-
-    @Override
-    public String transform() {
-        return function(textToTransform.transform());
     }
 }

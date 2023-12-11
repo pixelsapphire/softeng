@@ -38,6 +38,11 @@ public class ShortcutMod extends TextTransformerDecorator {
         return map;
     }
 
+    @Override
+    public String transform() {
+        return function(textToTransform.transform());
+    }
+
     public String function(String s) {
         String text = s;
         StringBuilder result = new StringBuilder();
@@ -55,10 +60,5 @@ public class ShortcutMod extends TextTransformerDecorator {
         } else {
             return text;
         }
-    }
-
-    @Override
-    public String transform() {
-        return function(textToTransform.transform());
     }
 }

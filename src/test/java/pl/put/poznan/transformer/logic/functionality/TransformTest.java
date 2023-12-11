@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextClass;
 import pl.put.poznan.transformer.logic.TextTransformer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TransformTest {
 

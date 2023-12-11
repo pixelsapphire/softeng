@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextClass;
 import pl.put.poznan.transformer.logic.TextTransformer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ToLaTeXTest {
 
@@ -16,6 +16,7 @@ public class ToLaTeXTest {
         ToLaTeX testCapitalize = new ToLaTeX(startText, true);
         assertEquals(" \\&,^! \\$\\_,,\\{\\}sadasdasda\\~\\~\\~\\*", testCapitalize.transform());
     }
+
     @Test
     public void transformLatex2() {
 

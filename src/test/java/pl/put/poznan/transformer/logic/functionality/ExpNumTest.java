@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextClass;
 import pl.put.poznan.transformer.logic.TextTransformer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ExpNumTest {
 
@@ -15,6 +15,7 @@ public class ExpNumTest {
         ExpNum testUpper = new ExpNum(startText, true);
         assertEquals("jeden sto pięćdziesiąt cztery sześćdziesiąt dziewięć osiemset czternaście", testUpper.transform());
     }
+
     @Test
     public void transformNumExp2() {
         TextTransformer startText;
@@ -22,6 +23,7 @@ public class ExpNumTest {
         ExpNum testUpper = new ExpNum(startText, true);
         assertEquals("jedenaście", testUpper.transform());
     }
+
     @Test
     public void transformNumExp3() {
         TextTransformer startText;
@@ -29,6 +31,7 @@ public class ExpNumTest {
         ExpNum testUpper = new ExpNum(startText, true);
         assertEquals("dziewięćset dziewięćdziesiąt dziewięć", testUpper.transform());
     }
+
     @Test
     public void transformNumExp4() {
         TextTransformer startText;

@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextClass;
 import pl.put.poznan.transformer.logic.TextTransformer;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ShortcutModTest {
 
@@ -15,6 +15,7 @@ public class ShortcutModTest {
         ShortcutMod test = new ShortcutMod(startText, "expand");
         assertEquals("Profesor ", test.transform());
     }
+
     @Test
     public void transformExp2() {
         TextTransformer startText;
@@ -22,6 +23,7 @@ public class ShortcutModTest {
         ShortcutMod test = new ShortcutMod(startText, "compress");
         assertEquals("Itp.", test.transform());
     }
+
     @Test
     public void transformNumExp3() {
         TextTransformer startText;
@@ -29,6 +31,7 @@ public class ShortcutModTest {
         ShortcutMod test = new ShortcutMod(startText, "expand");
         assertEquals("Magister ", test.transform());
     }
+
     @Test
     public void transformNumExp4() {
         TextTransformer startText;

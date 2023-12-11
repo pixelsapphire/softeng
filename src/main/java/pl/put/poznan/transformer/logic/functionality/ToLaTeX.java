@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class ToLaTeX extends TextTransformerDecorator {
 
-    private final boolean latexCharactersAllowed;
     private static final Map<Character, String> latexCharacterMappings;
 
     static {
@@ -22,6 +21,8 @@ public class ToLaTeX extends TextTransformerDecorator {
         latexCharacterMappings.put('~', "\\~");
         latexCharacterMappings.put('*', "\\*");
     }
+
+    private final boolean latexCharactersAllowed;
 
     public ToLaTeX(TextTransformer textToTransform, boolean latexCharactersAllowed) {
         super(textToTransform);
