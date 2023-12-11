@@ -1,10 +1,10 @@
 package pl.put.poznan.transformer.logic;
 
 public abstract class TextTransformer {
-	protected String descr = "valueATT";
+	protected String description;
 
 	public String getText() {
-		return descr;
+		return description;
 	}
 
 	public abstract String transform();
