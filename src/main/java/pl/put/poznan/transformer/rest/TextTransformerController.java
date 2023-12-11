@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.TextClass;
 import pl.put.poznan.transformer.logic.TextTransformer;
-import pl.put.poznan.transformer.logic.functionality.*;
+import pl.put.poznan.transformer.logic.transform.*;
 
 import java.util.Arrays;
 

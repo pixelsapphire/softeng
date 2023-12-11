@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.logic.functionality;
+package pl.put.poznan.transformer.logic.transform;
 
 import org.junit.Test;
 import pl.put.poznan.transformer.logic.TextClass;

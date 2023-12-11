@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.logic.functionality;
+package pl.put.poznan.transformer.logic.transform;
 
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
