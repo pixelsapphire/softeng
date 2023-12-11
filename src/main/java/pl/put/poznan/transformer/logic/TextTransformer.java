@@ -1,18 +1,12 @@
 package pl.put.poznan.transformer.logic;
 
-/**
- * This is just an example to show that the logic should be outside the REST service.
- */
-public class TextTransformer {
+public abstract class TextTransformer {
+	protected String descr = "valueATT";
 
-    private final String[] transforms;
+	public String getText() {
+		return descr;
+	}
 
-    public TextTransformer(String[] transforms){
-        this.transforms = transforms;
-    }
+	public abstract String transform();
 
-    public String transform(String text){
-        // of course, normally it would do something based on the transforms
-        return text.toUpperCase();
-    }
 }
