@@ -2,62 +2,60 @@ package pl.put.poznan.transformer.rest;
 
 public class TextTransformerClass {
 
-    private String Transform;
-    private boolean Numbers;
-    private String Shortcuts;
-    private boolean LaTeX;
-    private boolean Neighbors;
+    private String transform;
+    private boolean numbers;
+    private String shortcuts;
+    private boolean latex;
+    private boolean neighbors;
 
     public TextTransformerClass() {
     }
 
-    public TextTransformerClass(String Transform, boolean Numbers,
-                                String Shortcuts, boolean LaTeX, boolean Neighbors) {
-        super();
-        this.Transform = Transform;
-        this.Numbers = Numbers;
-        this.Shortcuts = Shortcuts;
-        this.LaTeX = LaTeX;
-        this.Neighbors = Neighbors;
+    public TextTransformerClass(String transform, boolean numbers, String shortcuts, boolean latex, boolean neighbors) {
+        this.transform = transform;
+        this.numbers = numbers;
+        this.shortcuts = shortcuts;
+        this.latex = latex;
+        this.neighbors = neighbors;
     }
 
     public String getBasicTransform() {
-        return Transform;
+        return transform;
     }
 
-    public void setBasicTransform(String Transform) {
-        this.Transform = Transform;
+    public void setBasicTransform(String transform) {
+        this.transform = transform;
     }
 
     public boolean isNumbers() {
-        return Numbers;
+        return numbers;
     }
 
-    public void setNumbers(boolean Numbers) {
-        this.Numbers = Numbers;
+    public void setNumbers(boolean numbers) {
+        this.numbers = numbers;
     }
 
     public String getShortcuts() {
-        return Shortcuts;
+        return shortcuts;
     }
 
-    public void setShortcuts(String Shortcuts) {
-        this.Shortcuts = Shortcuts;
+    public void setShortcuts(String shortcuts) {
+        this.shortcuts = shortcuts;
     }
 
     public boolean isLatex() {
-        return LaTeX;
+        return latex;
     }
 
-    public void setLatex(boolean LaTeX) {
-        this.LaTeX = LaTeX;
+    public void setLatex(boolean latex) {
+        this.latex = latex;
     }
 
     public boolean isNeighbors() {
-        return Neighbors;
+        return neighbors;
     }
 
-    public void setNeighbors(boolean Neighbors) {
-        this.Neighbors = Neighbors;
+    public void setNeighbors(boolean neighbors) {
+        this.neighbors = neighbors;
     }
 }
