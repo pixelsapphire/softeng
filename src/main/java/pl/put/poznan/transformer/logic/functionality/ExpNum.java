@@ -109,7 +109,6 @@ public class ExpNum extends TextTransformerDecorator {
 
             if (remainder < 10) {
                 result.append(DIGIT_MAP.get((char) (remainder + '0')));
-                result.append(" ").append(DIGIT_MAP.get((char) (remainder + '0')));
             } else if (remainder < 20) {
                 result.append(TEENS_MAP.get(String.valueOf(remainder)));
             } else {
