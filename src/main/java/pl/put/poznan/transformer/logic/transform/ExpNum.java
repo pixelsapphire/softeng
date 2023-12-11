@@ -14,16 +14,16 @@ public class ExpNum extends TextTransformerDecorator {
                                                         .with(4, "cztery").with(5, "pięć").with(6, "sześć").with(7, "siedem")
                                                         .with(8, "osiem").with(9, "dziewięć").build();
     private static final Map<Integer, String> TEENS
-            = new DictionaryBuilder<Integer, String>(0).with(10, "dziesięć").with(1, "jedenaście").with(2, "dwanaście")
+            = new DictionaryBuilder<Integer, String>(10).with(0, "dziesięć").with(1, "jedenaście").with(2, "dwanaście")
                                                        .with(3, "trzynaście").with(4, "czternaście").with(5, "piętnaście")
                                                        .with(6, "szesnaście").with(7, "siedemnaście").with(8, "osiemnaście")
                                                        .with(9, "dziewiętnaście").build();
     private static final Map<Integer, String> TENS
-            = new DictionaryBuilder<Integer, String>(10).with(2, "dwadzieścia").with(3, "trzydzieści").with(4, "czterdzieści")
+            = new DictionaryBuilder<Integer, String>(8).with(2, "dwadzieścia").with(3, "trzydzieści").with(4, "czterdzieści")
                                                         .with(5, "pięćdziesiąt").with(6, "sześćdziesiąt").with(7, "siedemdziesiąt")
                                                         .with(8, "osiemdziesiąt").with(9, "dziewięćdziesiąt").build();
     private static final Map<Integer, String> HUNDREDS
-            = new DictionaryBuilder<Integer, String>(10).with(1, "sto").with(2, "dwieście").with(3, "trzysta")
+            = new DictionaryBuilder<Integer, String>(9).with(1, "sto").with(2, "dwieście").with(3, "trzysta")
                                                         .with(4, "czterysta").with(5, "pięćset").with(6, "sześćset")
                                                         .with(7, "siedemset").with(8, "osiemset").with(9, "dziewięćset")
                                                         .build();
