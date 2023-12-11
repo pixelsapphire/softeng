@@ -1,13 +1,15 @@
 package pl.put.poznan.transformer.logic;
 
+import org.jetbrains.annotations.NotNull;
+
 public class TextClass extends TextTransformer {
 
-    public TextClass(String str) {
+    public TextClass(@NotNull String str) {
         this.description = str;
     }
 
     @Override
-    public String transform() {
+    public @NotNull String transform() {
         return description;
     }
 

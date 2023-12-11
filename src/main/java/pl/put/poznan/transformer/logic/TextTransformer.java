@@ -1,13 +1,15 @@
 package pl.put.poznan.transformer.logic;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class TextTransformer {
 
     protected String description;
 
-    public String getText() {
+    public @NotNull String getText() {
         return description;
     }
 
-    public abstract String transform();
+    public abstract @NotNull String transform();
 
 }

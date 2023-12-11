@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transform;
 
+import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
@@ -39,13 +40,13 @@ public class ShortcutMod extends TextTransformerDecorator {
     }
 
     @Override
-    public String transform() {
+    public @NotNull String transform() {
         return function(textToTransform.transform());
     }
 
-    public String function(String s) {
+    public @NotNull String function(@NotNull String s) {
         String text = s;
-        StringBuilder result = new StringBuilder();
+        final StringBuilder result = new StringBuilder();
         if ("expand".equals(shortcutType)) {
             String[] arr = s.split(" ");
             for (String ss : arr) {

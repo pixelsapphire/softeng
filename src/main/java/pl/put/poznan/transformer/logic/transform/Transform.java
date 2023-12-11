@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transform;
 
+import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
@@ -28,16 +29,13 @@ public class Transform extends TextTransformerDecorator {
         }
     }
 
-    private String capitalize(String text) {
-        StringBuilder result = new StringBuilder();
-        String[] substrings = text.split(" ");
-
-        for (String ss : substrings) {
-            if (ss.length() == 0) {
+    private String capitalize(@NotNull String text) {
+        final StringBuilder result = new StringBuilder();
+        for (String ss : text.split(" ")) {
+            if (ss.isEmpty()) {
                 result.append(" ");
                 continue;
             }
-
             if (Character.isLetter(ss.charAt(0))) {
                 result.append(Character.toUpperCase(ss.charAt(0)))
                       .append(ss.substring(1))

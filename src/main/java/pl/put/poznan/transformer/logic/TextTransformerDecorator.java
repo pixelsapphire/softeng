@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class TextTransformerDecorator extends TextTransformer {
 
     protected TextTransformer textToTransform;
@@ -9,5 +11,5 @@ public abstract class TextTransformerDecorator extends TextTransformer {
     }
 
     @Override
-    public abstract String transform();
+    public abstract @NotNull String transform();
 }

@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transform;
 
+import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
@@ -62,25 +63,22 @@ public class ExpNum extends TextTransformerDecorator {
         HUNDRED.put('9', "dziewięćset");
     }
 
-    private boolean numberExpandAllow;
+    private final boolean numberExpandAllow;
 
-    public ExpNum(TextTransformer textToTransform, boolean numberExpandAllow) {
+    public ExpNum(@NotNull TextTransformer textToTransform, boolean numberExpandAllow) {
         super(textToTransform);
         this.numberExpandAllow = numberExpandAllow;
     }
 
     @Override
-    public String transform() {
+    public @NotNull String transform() {
         return function(textToTransform.transform());
     }
 
-    public String function(String s) {
+    public @NotNull String function(@NotNull String s) {
         if (numberExpandAllow) {
-            StringBuilder result = new StringBuilder();
-
-            String[] parts = s.split("\\D+");
-
-            for (String part : parts) {
+            final StringBuilder result = new StringBuilder();
+            for (String part : s.split("\\D+")) {
                 try {
                     int numericValue = Integer.parseInt(part);
                     result.append(expandNumber(numericValue)).append(" ");
@@ -95,12 +93,12 @@ public class ExpNum extends TextTransformerDecorator {
         }
     }
 
-    private String expandNumber(int number) {
+    private @NotNull String expandNumber(int number) {
         if (number < 0 || number > 999) {
             return String.valueOf(number);
         }
 
-        StringBuilder result = new StringBuilder();
+        final StringBuilder result = new StringBuilder();
 
         int hundreds = number / 100;
         if (hundreds > 0) {

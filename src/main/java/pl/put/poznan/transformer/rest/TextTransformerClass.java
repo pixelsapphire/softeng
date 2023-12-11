@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.rest;
 
+import org.jetbrains.annotations.NotNull;
+
 public class TextTransformerClass {
 
     private String transform;
@@ -8,10 +10,8 @@ public class TextTransformerClass {
     private boolean latex;
     private boolean neighbors;
 
-    public TextTransformerClass() {
-    }
-
-    public TextTransformerClass(String transform, boolean numbers, String shortcuts, boolean latex, boolean neighbors) {
+    public TextTransformerClass(@NotNull String transform, boolean numbers,
+                                @NotNull String shortcuts, boolean latex, boolean neighbors) {
         this.transform = transform;
         this.numbers = numbers;
         this.shortcuts = shortcuts;
@@ -19,11 +19,11 @@ public class TextTransformerClass {
         this.neighbors = neighbors;
     }
 
-    public String getBasicTransform() {
+    public @NotNull String getBasicTransform() {
         return transform;
     }
 
-    public void setBasicTransform(String transform) {
+    public void setBasicTransform(@NotNull String transform) {
         this.transform = transform;
     }
 
@@ -35,11 +35,11 @@ public class TextTransformerClass {
         this.numbers = numbers;
     }
 
-    public String getShortcuts() {
+    public @NotNull String getShortcuts() {
         return shortcuts;
     }
 
-    public void setShortcuts(String shortcuts) {
+    public void setShortcuts(@NotNull String shortcuts) {
         this.shortcuts = shortcuts;
     }
 

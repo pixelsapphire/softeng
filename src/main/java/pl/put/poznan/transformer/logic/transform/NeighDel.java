@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic.transform;
 
+import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
@@ -7,13 +8,13 @@ public class NeighDel extends TextTransformerDecorator {
 
     private boolean removeAllow;
 
-    public NeighDel(TextTransformer textToTransform, boolean removeAllow) {
+    public NeighDel(@NotNull TextTransformer textToTransform, boolean removeAllow) {
         super(textToTransform);
         this.removeAllow = removeAllow;
     }
 
     @Override
-    public String transform() {
+    public @NotNull String transform() {
         if (removeAllow) {
             return removeAdjacentDuplicates(textToTransform.transform());
         } else {
@@ -21,7 +22,7 @@ public class NeighDel extends TextTransformerDecorator {
         }
     }
 
-    private String removeAdjacentDuplicates(String input) {
+    private @NotNull String removeAdjacentDuplicates(@NotNull String input) {
         String[] words = input.split(" ");
         StringBuilder result = new StringBuilder();
 
