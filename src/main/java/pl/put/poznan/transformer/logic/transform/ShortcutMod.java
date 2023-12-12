@@ -7,17 +7,32 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The ShortcutMod class is a decorator for TextTransformer that can expand or compress
+ * specified shortcuts in the input text.
+ */
 public class ShortcutMod extends TextTransformerDecorator {
 
     private final String shortcutType;
     private final Map<String, String> shortcutMap;
 
+    /**
+     * Constructs a new ShortcutMod object.
+     *
+     * @param textToTransform The TextTransformer to decorate.
+     * @param shortcutType    The type of shortcut modification ("expand" or "compress").
+     */
     public ShortcutMod(TextTransformer textToTransform, String shortcutType) {
         super(textToTransform);
         this.shortcutType = shortcutType;
         this.shortcutMap = initializeShortcutMap();
     }
 
+    /**
+     * Initializes the shortcut map with predefined shortcuts and their expansions.
+     *
+     * @return The initialized shortcut map.
+     */
     private Map<String, String> initializeShortcutMap() {
         Map<String, String> map = new HashMap<>();
         map.put("dr", "doktor ");
@@ -36,19 +51,32 @@ public class ShortcutMod extends TextTransformerDecorator {
         map.put("Nr", "Numer ");
         map.put("mgr", "magister ");
         map.put("Mgr", "Magister ");
+        // Add more shortcuts as needed
         return map;
     }
 
+    /**
+     * Transforms the input text based on the specified shortcut modification type.
+     *
+     * @return The transformed text.
+     */
     @Override
     public @NotNull String transform() {
-        return function(textToTransform.transform());
+        return applyShortcutModification(textToTransform.transform());
     }
 
-    public @NotNull String function(@NotNull String s) {
-        String text = s;
+    /**
+     * Applies the specified shortcut modification to the input text.
+     *
+     * @param inputText The input text to be transformed.
+     * @return The transformed text.
+     */
+    public @NotNull String applyShortcutModification(@NotNull String inputText) {
+        String text = inputText;
         final StringBuilder result = new StringBuilder();
+
         if ("expand".equals(shortcutType)) {
-            String[] arr = s.split(" ");
+            String[] arr = inputText.split(" ");
             for (String ss : arr) {
                 result.append(shortcutMap.getOrDefault(ss, ss + " "));
             }

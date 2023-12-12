@@ -9,6 +9,9 @@ import pl.put.poznan.transformer.logic.transform.*;
 
 import java.util.Arrays;
 
+/**
+ * Controller class for handling text transformation requests.
+ */
 @RestController
 @RequestMapping("/{text}")
 public class TextTransformerController {
@@ -16,6 +19,13 @@ public class TextTransformerController {
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
     private TextTransformer startText;
 
+    /**
+     * Handles GET requests for text transformation.
+     *
+     * @param text      The input text to be transformed.
+     * @param transforms Array of transformation types specified in the request.
+     * @return JSON representation of transformation details.
+     */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
         logger.debug(text);
@@ -30,6 +40,13 @@ public class TextTransformerController {
                "}";
     }
 
+    /**
+     * Handles POST requests for text transformation.
+     *
+     * @param text       The input text to be transformed.
+     * @param transforms Object containing transformation preferences specified in the request body.
+     * @return Transformed text based on the specified preferences.
+     */
     @RequestMapping(method = RequestMethod.POST)
     public String post(@PathVariable String text, @RequestBody TextTransformerClass transforms) {
         logger.debug(text);
