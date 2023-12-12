@@ -52,7 +52,7 @@ public class TextTransformerController {
         logger.debug(text);
         startText = new TextClass(text);
         startText = new ExpNum(startText, transforms.isNumbers());
-        startText = new ShortcutMod(startText, transforms.getShortcuts());
+        startText = new ShortcutMod(startText, ShortcutMod.Type.fromName(transforms.getShortcuts()));
         startText = new ToLaTeX(startText, transforms.isLatex());
         startText = new NeighDel(startText, transforms.isNeighbors());
         startText = new Transform(startText, transforms.getBasicTransform());
