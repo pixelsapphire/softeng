@@ -112,30 +112,4 @@ public class ShortcutMod extends TextTransformerDecorator {
             return Type.valueOf(name.toUpperCase());
         }
     }
-
-    /**
-     * Represents the type of shortcut modification.
-     */
-    public enum Type {
-
-        /**
-         * Replaces known shortcuts with their expansions.
-         */
-        EXPAND,
-        /**
-         * Replaces known shortcut expansions with the shortcuts.
-         */
-        COMPRESS;
-
-        /**
-         * Returns the type of shortcut modification from the given name.
-         *
-         * @param name the name of the type
-         * @return the type of shortcut modification
-         * @throws IllegalArgumentException if the given name is not a valid type name
-         */
-        public static Type fromName(@NotNull String name) {
-            return Type.valueOf(name.toUpperCase());
-        }
-    }
 }
