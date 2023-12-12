@@ -23,6 +23,7 @@ public class TextTransformerController {
         return "{\n" +
                "\"Transform\": \"none\",\n" +
                "\"Shortcuts\": \"none\",\n" +
+               "\"inverse\": true,\n" +
                "\"Numbers\": false,\n" +
                "\"Latex\": false,\n" +
                "\"Neighbors\": false,\n" +
