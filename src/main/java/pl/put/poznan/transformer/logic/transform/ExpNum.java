@@ -29,12 +29,12 @@ public class ExpNum extends TextTransformerDecorator {
                                                        .with(4, "czterysta").with(5, "pięćset").with(6, "sześćset")
                                                        .with(7, "siedemset").with(8, "osiemset").with(9, "dziewięćset")
                                                        .build();
-    private static final PluralVariant thousands = new PolishPluralVariant("tysiąc", "tysięcy", "tysiące", "tysiąca");
-    private static final PluralVariant millions = new PolishPluralVariant("milion", "milionów", "miliony", "miliona");
-    private static final PluralVariant billions = new PolishPluralVariant("miliard", "miliardów", "miliardy", "miliarda");
-    private static final PluralVariant trillions = new PolishPluralVariant("bilion", "bilionów", "biliony", "biliona");
-    private static final PluralVariant quadrillions = new PolishPluralVariant("biliard", "biliardów", "biliardy", "biliarda");
-    private static final PluralVariant quintillions = new PolishPluralVariant("trylion", "trylionów", "tryliony", "tryliona");
+    private static final PluralVariant thousands = new PolishPluralVariant("tysiąc", "tysiące", "tysięcy", "tysiąca");
+    private static final PluralVariant millions = new PolishPluralVariant("milion", "miliony", "milionów", "miliona");
+    private static final PluralVariant billions = new PolishPluralVariant("miliard", "miliardy", "miliardów", "miliarda");
+    private static final PluralVariant trillions = new PolishPluralVariant("bilion", "biliony", "bilionów", "biliona");
+    private static final PluralVariant quadrillions = new PolishPluralVariant("biliard", "biliardy", "biliardów", "biliarda");
+    private static final PluralVariant quintillions = new PolishPluralVariant("trylion", "tryliony", "trylionów", "tryliona");
 
     private final boolean numberExpandAllowed;
 
