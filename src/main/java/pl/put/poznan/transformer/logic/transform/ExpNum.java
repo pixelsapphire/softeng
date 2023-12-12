@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 import pl.put.poznan.transformer.util.DictionaryBuilder;
+import pl.put.poznan.transformer.util.PluralVariant;
+import pl.put.poznan.transformer.util.PolishPluralVariant;
 
 import java.util.Map;
 
@@ -15,18 +17,25 @@ public class ExpNum extends TextTransformerDecorator {
                                                         .with(8, "osiem").with(9, "dziewięć").build();
     private static final Map<Integer, String> TEENS
             = new DictionaryBuilder<Integer, String>(10).with(0, "dziesięć").with(1, "jedenaście").with(2, "dwanaście")
-                                                       .with(3, "trzynaście").with(4, "czternaście").with(5, "piętnaście")
-                                                       .with(6, "szesnaście").with(7, "siedemnaście").with(8, "osiemnaście")
-                                                       .with(9, "dziewiętnaście").build();
+                                                        .with(3, "trzynaście").with(4, "czternaście").with(5, "piętnaście")
+                                                        .with(6, "szesnaście").with(7, "siedemnaście").with(8, "osiemnaście")
+                                                        .with(9, "dziewiętnaście").build();
     private static final Map<Integer, String> TENS
             = new DictionaryBuilder<Integer, String>(8).with(2, "dwadzieścia").with(3, "trzydzieści").with(4, "czterdzieści")
-                                                        .with(5, "pięćdziesiąt").with(6, "sześćdziesiąt").with(7, "siedemdziesiąt")
-                                                        .with(8, "osiemdziesiąt").with(9, "dziewięćdziesiąt").build();
+                                                       .with(5, "pięćdziesiąt").with(6, "sześćdziesiąt").with(7, "siedemdziesiąt")
+                                                       .with(8, "osiemdziesiąt").with(9, "dziewięćdziesiąt").build();
     private static final Map<Integer, String> HUNDREDS
             = new DictionaryBuilder<Integer, String>(9).with(1, "sto").with(2, "dwieście").with(3, "trzysta")
-                                                        .with(4, "czterysta").with(5, "pięćset").with(6, "sześćset")
-                                                        .with(7, "siedemset").with(8, "osiemset").with(9, "dziewięćset")
-                                                        .build();
+                                                       .with(4, "czterysta").with(5, "pięćset").with(6, "sześćset")
+                                                       .with(7, "siedemset").with(8, "osiemset").with(9, "dziewięćset")
+                                                       .build();
+    private static final PluralVariant thousands = new PolishPluralVariant("tysiąc", "tysięcy", "tysiące", "tysiąca");
+    private static final PluralVariant millions = new PolishPluralVariant("milion", "milionów", "miliony", "miliona");
+    private static final PluralVariant billions = new PolishPluralVariant("miliard", "miliardów", "miliardy", "miliarda");
+    private static final PluralVariant trillions = new PolishPluralVariant("bilion", "bilionów", "biliony", "biliona");
+    private static final PluralVariant quadrillions = new PolishPluralVariant("biliard", "biliardów", "biliardy", "biliarda");
+    private static final PluralVariant quintillions = new PolishPluralVariant("trylion", "trylionów", "tryliony", "tryliona");
+
     private final boolean numberExpandAllowed;
 
     public ExpNum(@NotNull TextTransformer textToTransform, boolean numberExpandAllowed) {
@@ -34,42 +43,50 @@ public class ExpNum extends TextTransformerDecorator {
         this.numberExpandAllowed = numberExpandAllowed;
     }
 
-    @Override
-    public @NotNull String transform() {
-        return function(textToTransform.transform());
-    }
-
-    public @NotNull String function(@NotNull String s) {
-        if (numberExpandAllowed) {
-            final StringBuilder result = new StringBuilder();
-            for (String part : s.split("\\D+")) {
-                try {
-                    int numericValue = Integer.parseInt(part);
-                    result.append(numberInWords(numericValue)).append(" ");
-                } catch (NumberFormatException e) {
-                    result.append(part).append(" ");
-                }
-            }
-
-            return result.toString().trim();
-        } else {
-            return s;
-        }
-    }
-
-    private @NotNull String numberInWords(int number) {
-        if (number < 0 || number > 999) {
-            return String.valueOf(number);
-        }
+    private static @NotNull String numberInWords(long number) {
 
         final StringBuilder result = new StringBuilder();
 
-        int hundreds = number / 100;
-        if (hundreds > 0) {
-            result.append(HUNDREDS.get(hundreds));
+        if (number < 0) {
+            result.append("minus ");
+            number = -number;
         }
 
-        int remainder = number % 100;
+        if (number >= 1_000_000_000_000_000_000L) {
+            final long quintillion = number / 1_000_000_000_000_000_000L;
+            result.append(quintillions.getQuantityName(quintillion, ExpNum::numberInWords)).append(" ");
+            number %= 1_000_000_000_000_000_000L;
+        }
+        if (number >= 1_000_000_000_000_000L) {
+            final long quadrillion = number / 1_000_000_000_000_000L;
+            result.append(quadrillions.getQuantityName(quadrillion, ExpNum::numberInWords)).append(" ");
+            number %= 1_000_000_000_000_000L;
+        }
+        if (number >= 1_000_000_000_000L) {
+            final long trillion = number / 1_000_000_000_000L;
+            result.append(trillions.getQuantityName(trillion, ExpNum::numberInWords)).append(" ");
+            number %= 1_000_000_000_000L;
+        }
+        if (number >= 1_000_000_000L) {
+            final long billion = number / 1_000_000_000L;
+            result.append(billions.getQuantityName(billion, ExpNum::numberInWords)).append(" ");
+            number %= 1_000_000_000L;
+        }
+        if (number >= 1_000_000L) {
+            final long million = number / 1_000_000L;
+            result.append(millions.getQuantityName(million, ExpNum::numberInWords)).append(" ");
+            number %= 1_000_000L;
+        }
+        if (number >= 1_000L) {
+            final long thousand = number / 1_000L;
+            result.append(thousands.getQuantityName(thousand, ExpNum::numberInWords)).append(" ");
+            number %= 1_000L;
+        }
+
+        final int hundreds = (int) (number / 100);
+        if (hundreds > 0) result.append(HUNDREDS.get(hundreds));
+
+        final int remainder = (int) (number % 100);
         if (remainder > 0) {
             if (result.length() > 0) result.append(" ");
             if (remainder < 10) result.append(DIGITS.get(remainder));
@@ -83,5 +100,28 @@ public class ExpNum extends TextTransformerDecorator {
         }
 
         return result.toString();
+    }
+
+    @Override
+    public @NotNull String transform() {
+        return function(textToTransform.transform());
+    }
+
+    public @NotNull String function(@NotNull String s) {
+        if (numberExpandAllowed) {
+            final StringBuilder result = new StringBuilder();
+            for (String word : s.split(" ")) {
+                try {
+                    final long number = Long.parseLong(word);
+                    result.append(numberInWords(number)).append(" ");
+                } catch (NumberFormatException e) {
+                    result.append(word).append(" ");
+                }
+            }
+
+            return result.toString().trim();
+        } else {
+            return s;
+        }
     }
 }
