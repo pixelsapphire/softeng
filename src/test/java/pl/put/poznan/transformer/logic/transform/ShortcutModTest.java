@@ -12,7 +12,7 @@ public class ShortcutModTest {
     public void transformExp1() {
         TextTransformer startText;
         startText = new TextClass("Prof. ");
-        ShortcutMod test = new ShortcutMod(startText, "expand");
+        ShortcutMod test = new ShortcutMod(startText, ShortcutMod.Type.EXPAND);
         assertEquals("Profesor ", test.transform());
     }
 
@@ -20,7 +20,7 @@ public class ShortcutModTest {
     public void transformExp2() {
         TextTransformer startText;
         startText = new TextClass("I tym podobne ");
-        ShortcutMod test = new ShortcutMod(startText, "compress");
+        ShortcutMod test = new ShortcutMod(startText, ShortcutMod.Type.COMPRESS);
         assertEquals("Itp.", test.transform());
     }
 
@@ -28,7 +28,7 @@ public class ShortcutModTest {
     public void transformNumExp3() {
         TextTransformer startText;
         startText = new TextClass("Mgr ");
-        ShortcutMod test = new ShortcutMod(startText, "expand");
+        ShortcutMod test = new ShortcutMod(startText, ShortcutMod.Type.EXPAND);
         assertEquals("Magister ", test.transform());
     }
 
@@ -36,7 +36,7 @@ public class ShortcutModTest {
     public void transformNumExp4() {
         TextTransformer startText;
         startText = new TextClass("bieżącego roku ");
-        ShortcutMod test = new ShortcutMod(startText, "compress");
+        ShortcutMod test = new ShortcutMod(startText, ShortcutMod.Type.COMPRESS);
         assertEquals("br.", test.transform());
     }
 
@@ -44,7 +44,7 @@ public class ShortcutModTest {
     public void transformNumExp5() {
         TextTransformer startText;
         startText = new TextClass("Np.");
-        ShortcutMod test = new ShortcutMod(startText, "expand");
+        ShortcutMod test = new ShortcutMod(startText, ShortcutMod.Type.EXPAND);
         assertEquals("Na przykład ", test.transform());
     }
 }

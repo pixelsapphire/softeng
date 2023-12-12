@@ -13,16 +13,16 @@ import java.util.Map;
  */
 public class ShortcutMod extends TextTransformerDecorator {
 
-    private final String shortcutType;
+    private final Type shortcutType;
     private final Map<String, String> shortcutMap;
 
     /**
      * Constructs a new {@code ShortcutMod} object.
      *
-     * @param textToTransform the TextTransformer to decorate
-     * @param shortcutType    the type of shortcut modification ("expand" or "compress")
+     * @param textToTransform the {@link TextTransformer} to decorate
+     * @param shortcutType    the type of shortcut modification
      */
-    public ShortcutMod(@NotNull TextTransformer textToTransform, @NotNull String shortcutType) {
+    public ShortcutMod(@NotNull TextTransformer textToTransform, @NotNull Type shortcutType) {
         super(textToTransform);
         this.shortcutType = shortcutType;
         this.shortcutMap = initializeShortcutMap();
@@ -75,19 +75,41 @@ public class ShortcutMod extends TextTransformerDecorator {
         String text = inputText;
         final StringBuilder result = new StringBuilder();
 
-        if ("expand".equals(shortcutType)) {
-            String[] arr = inputText.split(" ");
-            for (String ss : arr) {
+        if (shortcutType.equals(Type.EXPAND)) {
+            final String[] arr = inputText.split(" ");
+            for (final String ss : arr)
                 result.append(shortcutMap.getOrDefault(ss, ss + " "));
-            }
             return result.toString();
-        } else if ("compress".equals(shortcutType)) {
-            for (Map.Entry<String, String> entry : shortcutMap.entrySet()) {
+        } else if (shortcutType.equals(Type.COMPRESS)) {
+            for (final Map.Entry<String, String> entry : shortcutMap.entrySet())
                 text = text.replaceAll(entry.getValue(), entry.getKey());
-            }
             return text;
-        } else {
-            return text;
+        } else return text;
+    }
+
+    /**
+     * Represents the type of shortcut modification.
+     */
+    public enum Type {
+
+        /**
+         * Replaces known shortcuts with their expansions.
+         */
+        EXPAND,
+        /**
+         * Replaces known shortcut expansions with the shortcuts.
+         */
+        COMPRESS;
+
+        /**
+         * Returns the type of shortcut modification from the given name.
+         *
+         * @param name the name of the type
+         * @return the type of shortcut modification
+         * @throws IllegalArgumentException if the given name is not a valid type name
+         */
+        public static Type fromName(@NotNull String name) {
+            return Type.valueOf(name.toUpperCase());
         }
     }
 }
