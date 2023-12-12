@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The ShortcutMod class is a decorator for TextTransformer that can expand or compress
+ * The {@code ShortcutMod} class is a decorator for {@link TextTransformer} that can expand or compress
  * specified shortcuts in the input text.
  */
 public class ShortcutMod extends TextTransformerDecorator {
@@ -17,12 +17,12 @@ public class ShortcutMod extends TextTransformerDecorator {
     private final Map<String, String> shortcutMap;
 
     /**
-     * Constructs a new ShortcutMod object.
+     * Constructs a new {@code ShortcutMod} object.
      *
-     * @param textToTransform The TextTransformer to decorate.
-     * @param shortcutType    The type of shortcut modification ("expand" or "compress").
+     * @param textToTransform the TextTransformer to decorate
+     * @param shortcutType    the type of shortcut modification ("expand" or "compress")
      */
-    public ShortcutMod(TextTransformer textToTransform, String shortcutType) {
+    public ShortcutMod(@NotNull TextTransformer textToTransform, @NotNull String shortcutType) {
         super(textToTransform);
         this.shortcutType = shortcutType;
         this.shortcutMap = initializeShortcutMap();
@@ -31,7 +31,7 @@ public class ShortcutMod extends TextTransformerDecorator {
     /**
      * Initializes the shortcut map with predefined shortcuts and their expansions.
      *
-     * @return The initialized shortcut map.
+     * @return the initialized shortcut map
      */
     private Map<String, String> initializeShortcutMap() {
         Map<String, String> map = new HashMap<>();
@@ -58,7 +58,7 @@ public class ShortcutMod extends TextTransformerDecorator {
     /**
      * Transforms the input text based on the specified shortcut modification type.
      *
-     * @return The transformed text.
+     * @return the transformed text
      */
     @Override
     public @NotNull String transform() {
@@ -68,8 +68,8 @@ public class ShortcutMod extends TextTransformerDecorator {
     /**
      * Applies the specified shortcut modification to the input text.
      *
-     * @param inputText The input text to be transformed.
-     * @return The transformed text.
+     * @param inputText the text to be transformed
+     * @return the transformed text
      */
     public @NotNull String applyShortcutModification(@NotNull String inputText) {
         String text = inputText;

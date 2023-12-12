@@ -5,21 +5,23 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 
 /**
- * The Transform class represents a text transformer that performs various transformations
- * such as converting to uppercase, lowercase, or capitalizing the text.
+ * The {@code Transform} class represents a text transformer that performs various
+ * transformations such as converting to uppercase, lowercase, or capitalizing the text.
  */
 public class Transform extends TextTransformerDecorator {
 
-    /** The type of transformation to be applied ("upper", "lower", or "capitalize"). */
+    /**
+     * The type of transformation to be applied ("upper", "lower", or "capitalize").
+     */
     private final String typeOfTransform;
 
     /**
-     * Constructs a Transform object with a specified type of transformation.
+     * Constructs a {@code Transform} object with a specified type of transformation.
      *
-     * @param textToTransform The text transformer to decorate.
-     * @param typeOfTransform The type of transformation to apply ("upper", "lower", or "capitalize").
+     * @param textToTransform the text transformer to decorate
+     * @param typeOfTransform the type of transformation to apply ("upper", "lower", or "capitalize")
      */
-    public Transform(TextTransformer textToTransform, String typeOfTransform) {
+    public Transform(@NotNull TextTransformer textToTransform, @NotNull String typeOfTransform) {
         super(textToTransform);
         this.typeOfTransform = typeOfTransform;
     }
@@ -27,7 +29,7 @@ public class Transform extends TextTransformerDecorator {
     /**
      * Transforms the text based on the specified type of transformation.
      *
-     * @return The transformed text.
+     * @return the transformed text
      */
     @Override
     public String transform() {
@@ -48,8 +50,8 @@ public class Transform extends TextTransformerDecorator {
     /**
      * Capitalizes the first letter of each word in the given text.
      *
-     * @param text The text to capitalize.
-     * @return The capitalized text.
+     * @param text the text to capitalize
+     * @return capitalized text
      */
     private String capitalize(@NotNull String text) {
         final StringBuilder result = new StringBuilder();

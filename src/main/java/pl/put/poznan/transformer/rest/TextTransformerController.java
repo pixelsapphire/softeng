@@ -22,9 +22,9 @@ public class TextTransformerController {
     /**
      * Handles GET requests for text transformation.
      *
-     * @param text      The input text to be transformed.
-     * @param transforms Array of transformation types specified in the request.
-     * @return JSON representation of transformation details.
+     * @param text       the input text to be transformed
+     * @param transforms array of transformation types specified in the request
+     * @return JSON representation of transformation details
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
@@ -43,9 +43,9 @@ public class TextTransformerController {
     /**
      * Handles POST requests for text transformation.
      *
-     * @param text       The input text to be transformed.
-     * @param transforms Object containing transformation preferences specified in the request body.
-     * @return Transformed text based on the specified preferences.
+     * @param text       the input text to be transformed
+     * @param transforms object containing transformation preferences specified in the request body
+     * @return transformed text based on the specified preferences
      */
     @RequestMapping(method = RequestMethod.POST)
     public String post(@PathVariable String text, @RequestBody TextTransformerClass transforms) {

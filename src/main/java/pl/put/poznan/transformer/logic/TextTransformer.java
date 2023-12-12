@@ -3,8 +3,8 @@ package pl.put.poznan.transformer.logic;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The TextTransformer class is an abstract base class for text transformation operations.
- * Subclasses must implement the transform() method to define specific transformation logic.
+ * The {@code TextTransformer} class is an abstract base class for text transformation operations.
+ * Subclasses must implement the {@link #transform()} method to define specific transformation logic.
  */
 public abstract class TextTransformer {
 
@@ -16,17 +16,16 @@ public abstract class TextTransformer {
     /**
      * Gets the current text description.
      *
-     * @return The current text description.
+     * @return the current text description
      */
     public @NotNull String getText() {
         return description;
     }
 
     /**
-     * Abstract method to be implemented by subclasses.
-     * Performs the actual transformation of the text.
+     * Abstract method to be implemented by subclasses. Performs the actual transformation of the text.
      *
-     * @return The transformed text.
+     * @return the transformed text
      */
     public abstract @NotNull String transform();
 }

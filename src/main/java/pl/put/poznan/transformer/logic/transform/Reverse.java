@@ -16,15 +16,14 @@ public class Reverse extends TextTransformerDecorator {
     private final boolean inverseAllow;
 
     /**
-     * Constructs an Inverse object with the given text transformer and inverse
-     * transformation allowance.
+     * Constructs a {@code Reverse} object with the given text transformer and inverse transformation allowance.
      *
      * @param textToTransform the text transformer to decorate
-     * @param inverseAllow    true if inverse transformation is allowed, false otherwise
+     * @param reversalAllowed true if reverse transformation is allowed, false otherwise
      */
-    public Reverse(@NotNull TextTransformer textToTransform, boolean inverseAllow) {
+    public Reverse(@NotNull TextTransformer textToTransform, boolean reversalAllowed) {
         super(textToTransform);
-        this.inverseAllow = inverseAllow;
+        this.inverseAllow = reversalAllowed;
     }
 
     /**

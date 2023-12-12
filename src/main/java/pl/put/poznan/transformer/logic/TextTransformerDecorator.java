@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The base class for text transformation decorators.
- * Extends TextTransformer to provide a common interface for text transformation.
+ * Extends {@link TextTransformer} to provide a common interface for text transformation.
  */
 public abstract class TextTransformerDecorator extends TextTransformer {
 
@@ -16,16 +16,16 @@ public abstract class TextTransformerDecorator extends TextTransformer {
     /**
      * Constructs a TextTransformerDecorator with the specified text transformer to decorate.
      *
-     * @param textToTransform The text transformer to be decorated.
+     * @param textToTransform the text transformer to be decorated
      */
-    public TextTransformerDecorator(TextTransformer textToTransform) {
+    public TextTransformerDecorator(@NotNull TextTransformer textToTransform) {
         this.textToTransform = textToTransform;
     }
 
     /**
      * Transforms the text using the decorated text transformer.
      *
-     * @return The transformed text.
+     * @return the transformed text
      */
     @Override
     public abstract @NotNull String transform();

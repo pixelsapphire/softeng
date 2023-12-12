@@ -15,14 +15,14 @@ public class TextTransformerClass {
     private boolean neighbors;
 
     /**
-     * Constructs a TextTransformerClass with specified parameters.
+     * Constructs a {@code TextTransformerClass} with specified parameters.
      *
      * @param transform the basic transformation string
-     * @param numbers   flag indicating whether to transform numbers
-     * @param inverse   flag indicating whether to apply the transformation inversely
+     * @param numbers   indicates whether to transform numbers
+     * @param inverse   indicates whether to apply the transformation inversely
      * @param shortcuts a string containing shortcuts for the transformation
-     * @param latex     flag indicating whether to use LaTeX formatting
-     * @param neighbors flag indicating whether to consider neighboring elements
+     * @param latex     indicates whether to use LaTeX formatting
+     * @param neighbors indicates whether to consider neighboring elements
      */
     public TextTransformerClass(@NotNull String transform, boolean numbers, boolean inverse,
                                 @NotNull String shortcuts, boolean latex, boolean neighbors) {
