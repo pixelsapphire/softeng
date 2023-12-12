@@ -11,9 +11,9 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
 public class Transform extends TextTransformerDecorator {
 
     /**
-     * The type of transformation to be applied ("upper", "lower", or "capitalize").
+     * The type of transformation to be applie.
      */
-    private final String typeOfTransform;
+    private final Type typeOfTransform;
 
     /**
      * Constructs a {@code Transform} object with a specified type of transformation.
@@ -21,7 +21,7 @@ public class Transform extends TextTransformerDecorator {
      * @param textToTransform the text transformer to decorate
      * @param typeOfTransform the type of transformation to apply ("upper", "lower", or "capitalize")
      */
-    public Transform(@NotNull TextTransformer textToTransform, @NotNull String typeOfTransform) {
+    public Transform(@NotNull TextTransformer textToTransform, @NotNull Type typeOfTransform) {
         super(textToTransform);
         this.typeOfTransform = typeOfTransform;
     }
@@ -32,15 +32,14 @@ public class Transform extends TextTransformerDecorator {
      * @return the transformed text
      */
     @Override
-    public String transform() {
-        String transformedText = textToTransform.transform();
-
+    public @NotNull String transform() {
+        final String transformedText = textToTransform.transform();
         switch (typeOfTransform) {
-            case "upper":
+            case UPPER:
                 return transformedText.toUpperCase();
-            case "lower":
+            case LOWER:
                 return transformedText.toLowerCase();
-            case "capitalize":
+            case CAPITALIZE:
                 return capitalize(transformedText);
             default:
                 return transformedText;
@@ -53,7 +52,7 @@ public class Transform extends TextTransformerDecorator {
      * @param text the text to capitalize
      * @return capitalized text
      */
-    private String capitalize(@NotNull String text) {
+    private @NotNull String capitalize(@NotNull String text) {
         final StringBuilder result = new StringBuilder();
         for (String word : text.split(" ")) {
             if (word.isEmpty()) {
@@ -70,5 +69,39 @@ public class Transform extends TextTransformerDecorator {
         }
 
         return result.toString().trim();
+    }
+
+    /**
+     * The type of transformation to be applied.
+     */
+    public enum Type {
+
+        /**
+         * Uppercase transformation.
+         */
+        UPPER,
+        /**
+         * Lowercase transformation.
+         */
+        LOWER,
+        /**
+         * Capitalize transformation (first letter of each word is capitalized).
+         */
+        CAPITALIZE,
+        /**
+         * No transformation.
+         */
+        IDENTITY;
+
+        /**
+         * Returns the type of transformation from the given name.
+         *
+         * @param name the name of the type
+         * @return the type of transformation
+         * @throws IllegalArgumentException if the given name is not a valid type name
+         */
+        public static Type fromName(@NotNull String name) {
+            return Type.valueOf(name.toUpperCase());
+        }
     }
 }

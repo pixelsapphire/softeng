@@ -55,7 +55,7 @@ public class TextTransformerController {
         startText = new ShortcutMod(startText, ShortcutMod.Type.fromName(transforms.getShortcuts()));
         startText = new ToLaTeX(startText, transforms.isLatex());
         startText = new NeighDel(startText, transforms.isNeighbors());
-        startText = new Transform(startText, transforms.getBasicTransform());
+        startText = new Transform(startText, Transform.Type.fromName(transforms.getBasicTransform()));
         return startText.transform();
     }
 }
