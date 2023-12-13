@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven Project Object Model (POM) for a Spring Boot project -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
+    <!-- POM Model Version -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Parent Project Information (Spring Boot Starter Parent) -->
     <parent>
-        <!-- Spring Boot Starter Parent -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.3.RELEASE</version>
     </parent>
 
+    <!-- Project Coordinates -->
     <groupId>pl.put.poznan</groupId>
     <artifactId>io-project-architecture</artifactId>
     <version>0.1</version>
 
+    <!-- Project Properties -->
     <properties>
         <!-- Java Version -->
         <java.version>11</java.version>
     </properties>
 
+    <!-- Project Dependencies -->
     <dependencies>
         <!-- Spring Boot Web Starter -->
         <dependency>
@@ -42,6 +47,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
             <exclusions>
+                <!-- Exclude JUnit Vintage Engine -->
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
@@ -64,6 +70,7 @@
         </dependency>
     </dependencies>
 
+    <!-- Build Configuration -->
     <build>
         <plugins>
             <!-- Maven Site Plugin -->
@@ -92,10 +99,35 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.1</version>
+                <executions>
+                    <!-- Attach Javadoc during the Jar packaging phase -->
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.5.5</version> <!-- Use the latest version -->
+                <executions>
+                    <!-- Repackage the JAR during the build -->
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
 
+    <!-- Project Repositories -->
     <repositories>
         <!-- Spring Releases Repository -->
         <repository>
@@ -104,6 +136,7 @@
         </repository>
     </repositories>
 
+    <!-- Project Plugin Repositories -->
     <pluginRepositories>
         <!-- Spring Releases Plugin Repository -->
         <pluginRepository>
