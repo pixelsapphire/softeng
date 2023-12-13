@@ -28,3 +28,6 @@ replay_pid*
 
 # IntelliJ project files
 .idea/
+
+#VSCode settings
+.vscode/settings.json
