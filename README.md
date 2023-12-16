@@ -9,6 +9,6 @@ Dla osób pracujących z danymi tekstowymi nasza aplikacja Text Transformer umo�
 - Rastsislau Chapeha (153996)
 - Dariusz Karolewski (145429)
 - Alex Pawelski (147412)
-- Stanisław Puzio (151886)
+- Stanisław Puzio (151886)  
 
 [Backlog (arkusz Google Sheets)](https://docs.google.com/spreadsheets/d/1vGzwlkJ8P-yKGuXi-MQwKefOzHE9fn1R9GUHxYvz5JE/edit?usp=sharing)
