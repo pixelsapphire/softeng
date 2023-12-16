@@ -11,7 +11,7 @@ import java.util.Map;
  * The {@code ShortcutMod} class is a decorator for {@link TextTransformer} that can expand or compress
  * specified shortcuts in the input text.
  */
-public class ShortcutMod extends TextTransformerDecorator {
+public class ShortcutTransform extends TextTransformerDecorator {
 
     private final Type shortcutType;
     private final Map<String, String> shortcutMap;
@@ -22,7 +22,7 @@ public class ShortcutMod extends TextTransformerDecorator {
      * @param textToTransform the {@link TextTransformer} to decorate
      * @param shortcutType    the type of shortcut modification
      */
-    public ShortcutMod(@NotNull TextTransformer textToTransform, @NotNull Type shortcutType) {
+    public ShortcutTransform(@NotNull TextTransformer textToTransform, @NotNull Type shortcutType) {
         super(textToTransform);
         this.shortcutType = shortcutType;
         this.shortcutMap = initializeShortcutMap();

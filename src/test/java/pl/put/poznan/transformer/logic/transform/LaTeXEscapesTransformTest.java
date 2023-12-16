@@ -6,14 +6,14 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 
 import static org.junit.Assert.assertEquals;
 
-public class ToLaTeXTest {
+public class LaTeXEscapesTransformTest {
 
     @Test
     public void transformLatex1() {
 
         TextTransformer startText;
         startText = new TextClass(" &,^! $_,,{}sadasdasda~~~*");
-        ToLaTeX testCapitalize = new ToLaTeX(startText, true);
+        LaTeXEscapesTransform testCapitalize = new LaTeXEscapesTransform(startText, true);
         assertEquals(" \\&,^! \\$\\_,,\\{\\}sadasdasda\\~\\~\\~\\*", testCapitalize.transform());
     }
 
@@ -22,7 +22,7 @@ public class ToLaTeXTest {
 
         TextTransformer startText;
         startText = new TextClass(" &, $_,,{}sadasdasda~~~*");
-        ToLaTeX testCapitalize = new ToLaTeX(startText, false);
+        LaTeXEscapesTransform testCapitalize = new LaTeXEscapesTransform(startText, false);
         assertEquals(" &, $_,,{}sadasdasda~~~*", testCapitalize.transform());
     }
 

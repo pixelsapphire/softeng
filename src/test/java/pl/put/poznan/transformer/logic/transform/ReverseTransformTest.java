@@ -6,13 +6,13 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReverseTest {
+public class ReverseTransformTest {
 
     @Test
     void testTransform() {
         TextTransformer startText;
         startText = new TextClass("kot pies");
-        Reverse test = new Reverse(startText, true);
+        ReverseTransform test = new ReverseTransform(startText, true);
         assertEquals("seip tok", test.transform());
     }
 }

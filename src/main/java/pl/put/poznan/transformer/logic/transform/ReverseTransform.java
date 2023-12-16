@@ -8,7 +8,7 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
  * The {@code Reverse} class represents a text transformer decorator that performs
  * a reverse transformation on the input text based on specified conditions.
  */
-public class Reverse extends TextTransformerDecorator {
+public class ReverseTransform extends TextTransformerDecorator {
 
     /**
      * Indicates whether inverse transformation is allowed.
@@ -21,7 +21,7 @@ public class Reverse extends TextTransformerDecorator {
      * @param textToTransform the text transformer to decorate
      * @param reversalAllowed true if reverse transformation is allowed, false otherwise
      */
-    public Reverse(@NotNull TextTransformer textToTransform, boolean reversalAllowed) {
+    public ReverseTransform(@NotNull TextTransformer textToTransform, boolean reversalAllowed) {
         super(textToTransform);
         this.inverseAllow = reversalAllowed;
     }
@@ -33,7 +33,7 @@ public class Reverse extends TextTransformerDecorator {
      */
     @Override
     public @NotNull String transform() {
-        return inverseAllow ? invertString(textToTransform.transform()) : textToTransform.transform();
+        return inverseAllow ? reverttString(textToTransform.transform()) : textToTransform.transform();
     }
 
     /**
@@ -42,7 +42,7 @@ public class Reverse extends TextTransformerDecorator {
      * @param input the string to invert
      * @return the inverted input string
      */
-    private @NotNull String invertString(@NotNull String input) {
+    private @NotNull String reverttString(@NotNull String input) {
         return new StringBuilder(input).reverse().toString();
     }
 }

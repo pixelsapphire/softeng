@@ -10,7 +10,7 @@ import pl.put.poznan.transformer.util.PolishPluralVariant;
 import java.util.List;
 import java.util.Map;
 
-public class ExpNum extends TextTransformerDecorator {
+public class NumberExpansionTransform extends TextTransformerDecorator {
 
     private static final Map<Integer, String> DIGITS
             = new DictionaryBuilder<Integer, String>(10).with(0, "zero").with(1, "jeden").with(2, "dwa").with(3, "trzy")
@@ -39,7 +39,7 @@ public class ExpNum extends TextTransformerDecorator {
 
     private final boolean numberExpandAllowed;
 
-    public ExpNum(@NotNull TextTransformer textToTransform, boolean numberExpandAllowed) {
+    public NumberExpansionTransform(@NotNull TextTransformer textToTransform, boolean numberExpandAllowed) {
         super(textToTransform);
         this.numberExpandAllowed = numberExpandAllowed;
     }
@@ -57,7 +57,7 @@ public class ExpNum extends TextTransformerDecorator {
         for (long powOf10 = 1_000_000_000_000_000_000L, variant = 0; powOf10 >= 1_000L; powOf10 /= 1_000L, variant++) {
             final long triplet = number / powOf10;
             if (triplet > 0) {
-                result.append(variants.get((int) variant).getQuantityName(triplet, ExpNum::numberInWords)).append(" ");
+                result.append(variants.get((int) variant).getQuantityName(triplet, NumberExpansionTransform::numberInWords)).append(" ");
                 number %= powOf10;
             }
         }
@@ -83,10 +83,10 @@ public class ExpNum extends TextTransformerDecorator {
 
     @Override
     public @NotNull String transform() {
-        return function(textToTransform.transform());
+        return expandNumbers(textToTransform.transform());
     }
 
-    public @NotNull String function(@NotNull String s) {
+    private @NotNull String expandNumbers(@NotNull String s) {
         if (numberExpandAllowed) {
             final StringBuilder result = new StringBuilder();
             for (String word : s.split(" ")) {

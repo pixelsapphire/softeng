@@ -8,7 +8,7 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
  * The {@code NeighDel} class is a decorator that removes adjacent duplicates from the text,
  * based on the specified condition.
  */
-public class NeighDel extends TextTransformerDecorator {
+public class DuplicatesRemovalTransform extends TextTransformerDecorator {
 
     private final boolean removeAllow;
 
@@ -18,7 +18,7 @@ public class NeighDel extends TextTransformerDecorator {
      * @param textToTransform the TextTransformer to be decorated
      * @param removingAllowed indicates whether to remove adjacent duplicates or not
      */
-    public NeighDel(@NotNull TextTransformer textToTransform, boolean removingAllowed) {
+    public DuplicatesRemovalTransform(@NotNull TextTransformer textToTransform, boolean removingAllowed) {
         super(textToTransform);
         this.removeAllow = removingAllowed;
     }
@@ -30,11 +30,8 @@ public class NeighDel extends TextTransformerDecorator {
      */
     @Override
     public @NotNull String transform() {
-        if (removeAllow) {
-            return removeAdjacentDuplicates(textToTransform.transform());
-        } else {
-            return textToTransform.transform();
-        }
+        if (removeAllow) return removeAdjacentDuplicates(textToTransform.transform());
+        else return textToTransform.transform();
     }
 
     /**

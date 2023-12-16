@@ -9,17 +9,17 @@ import org.jetbrains.annotations.NotNull;
 public abstract class TextTransformer {
 
     /**
-     * The description of the text to be transformed.
+     * The text to be transformed.
      */
-    protected String description;
+    protected String text;
 
     /**
-     * Gets the current text description.
+     * Gets the text to be transformed.
      *
-     * @return the current text description
+     * @return the text to be transformed
      */
     public @NotNull String getText() {
-        return description;
+        return text;
     }
 
     /**

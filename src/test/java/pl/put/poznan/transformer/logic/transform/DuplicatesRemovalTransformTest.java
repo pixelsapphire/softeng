@@ -6,14 +6,14 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 
 import static org.junit.Assert.assertEquals;
 
-public class NeighDelTest {
+public class DuplicatesRemovalTransformTest {
 
     @Test
     public void transformNeighborRemove1() {
 
         TextTransformer startText;
         startText = new TextClass("ala ala lala ala ala");
-        NeighDel testCapitalize = new NeighDel(startText, true);
+        DuplicatesRemovalTransform testCapitalize = new DuplicatesRemovalTransform(startText, true);
         assertEquals("ala lala ala", testCapitalize.transform());
     }
 
@@ -22,7 +22,7 @@ public class NeighDelTest {
 
         TextTransformer startText;
         startText = new TextClass("ala ala aLa ala ala");
-        NeighDel testCapitalize = new NeighDel(startText, false);
+        DuplicatesRemovalTransform testCapitalize = new DuplicatesRemovalTransform(startText, false);
         assertEquals("ala ala aLa ala ala", testCapitalize.transform());
     }
 
@@ -31,7 +31,7 @@ public class NeighDelTest {
 
         TextTransformer startText;
         startText = new TextClass("ala ma kota a a a jan jan jan psa psa");
-        NeighDel testCapitalize = new NeighDel(startText, true);
+        DuplicatesRemovalTransform testCapitalize = new DuplicatesRemovalTransform(startText, true);
         assertEquals("ala ma kota a jan psa", testCapitalize.transform());
     }
 }

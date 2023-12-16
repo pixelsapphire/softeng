@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * A decorator class that transforms text into LaTeX format.
  */
-public class ToLaTeX extends TextTransformerDecorator {
+public class LaTeXEscapesTransform extends TextTransformerDecorator {
 
     // Mapping of special characters to their LaTeX equivalents
     private static final Map<Character, String> latexCharacterMappings;
@@ -35,7 +35,7 @@ public class ToLaTeX extends TextTransformerDecorator {
      * @param textToTransform        the TextTransformer to be decorated
      * @param latexCharactersAllowed indicates whether LaTeX characters are allowed or not
      */
-    public ToLaTeX(@NotNull TextTransformer textToTransform, boolean latexCharactersAllowed) {
+    public LaTeXEscapesTransform(@NotNull TextTransformer textToTransform, boolean latexCharactersAllowed) {
         super(textToTransform);
         this.latexCharactersAllowed = latexCharactersAllowed;
     }
@@ -48,11 +48,11 @@ public class ToLaTeX extends TextTransformerDecorator {
      */
     @Override
     public @NotNull String transform() {
-        return latexCharactersAllowed ? transformText() : textToTransform.transform();
+        return latexCharactersAllowed ? addLaTeXEscapes() : textToTransform.transform();
     }
 
     // Transforms the text into LaTeX format by replacing special characters
-    private @NotNull String transformText() {
+    private @NotNull String addLaTeXEscapes() {
         StringBuilder result = new StringBuilder();
         for (char c : textToTransform.transform().toCharArray()) {
             result.append(latexCharacterMappings.getOrDefault(c, String.valueOf(c)));

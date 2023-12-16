@@ -14,7 +14,7 @@ public class TextClass extends TextTransformer {
      * @param str the input text description to be used by the text transformer
      */
     public TextClass(@NotNull String str) {
-        this.description = str;
+        this.text = str;
     }
 
     /**
@@ -24,7 +24,7 @@ public class TextClass extends TextTransformer {
      */
     @Override
     public @NotNull String transform() {
-        return description;
+        return text;
     }
 
 }

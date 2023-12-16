@@ -8,7 +8,7 @@ import pl.put.poznan.transformer.logic.TextTransformerDecorator;
  * The {@code Transform} class represents a text transformer that performs various
  * transformations such as converting to uppercase, lowercase, or capitalizing the text.
  */
-public class Transform extends TextTransformerDecorator {
+public class CaseTransform extends TextTransformerDecorator {
 
     /**
      * The type of transformation to be applie.
@@ -21,7 +21,7 @@ public class Transform extends TextTransformerDecorator {
      * @param textToTransform the text transformer to decorate
      * @param typeOfTransform the type of transformation to apply ("upper", "lower", or "capitalize")
      */
-    public Transform(@NotNull TextTransformer textToTransform, @NotNull Type typeOfTransform) {
+    public CaseTransform(@NotNull TextTransformer textToTransform, @NotNull Type typeOfTransform) {
         super(textToTransform);
         this.typeOfTransform = typeOfTransform;
     }
@@ -37,7 +37,7 @@ public class Transform extends TextTransformerDecorator {
         switch (typeOfTransform) {
             case UPPER: return transformedText.toUpperCase();
             case LOWER: return transformedText.toLowerCase();
-            case CAPITALIZE: return capitalize(transformedText);
+            case CAPITALIZE: return caseTransformation(transformedText);
             default: return transformedText;
         }
     }
@@ -48,7 +48,7 @@ public class Transform extends TextTransformerDecorator {
      * @param text the text to capitalize
      * @return capitalized text
      */
-    private @NotNull String capitalize(@NotNull String text) {
+    private @NotNull String caseTransformation(@NotNull String text) {
         final StringBuilder result = new StringBuilder();
         for (String word : text.split(" ")) {
             if (word.isEmpty()) {
