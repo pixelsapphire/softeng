@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
-    private TextTransformer startText;
 
     /**
      * Handles GET requests for text transformation.
@@ -39,12 +38,11 @@ public class TextTransformerController {
         boolean neighbours = false;
 
         try {
-            for (String transformation: transforms) {
+            for (String transformation : transforms) {
                 transformation = transformation.toLowerCase();
-                if (Arrays.asList("upper", "lower","capitalize").contains(transformation)) {
-                    if(transformOperations == null) {
-                        transformOperations = new StringBuilder(transformation);
-                    } else {
+                if (Arrays.asList("upper", "lower", "capitalize").contains(transformation)) {
+                    if (transformOperations == null) transformOperations = new StringBuilder(transformation);
+                    else {
                         transformOperations.append(", ");
                         transformOperations.append(transformation);
                     }
@@ -52,35 +50,30 @@ public class TextTransformerController {
                 }
 
                 switch (transformation) {
-                    case "inverse":
-                        inverse = true;
+                    case "inverse": inverse = true;
                         break;
-                    case "numbers":
-                        numbers = true;
+                    case "numbers": numbers = true;
                         break;
-                    case "latex":
-                        latex = true;
+                    case "latex": latex = true;
                         break;
-                    case "neighbours":
-                        neighbours = true;
+                    case "neighbours": neighbours = true;
                         break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + transformation);
+                    default: throw new IllegalStateException("Unexpected value: " + transformation);
                 }
             }
 
-        } catch (Throwable e) {
-            e.printStackTrace();
+        } catch (final Throwable e) {
+            logger.error("Error while parsing the request: " + e.getMessage());
             return null;
         }
         return "{\n" +
                "\"Transform\": " + (transformOperations != null ? transformOperations.toString() : "none") + ",\n" +
                "\"Shortcuts\": \"none\",\n" +
-               "\"inverse\": " + inverse  + ",\n" +
-                "\"Numbers\": " + numbers  + ",\n" +
-                "\"Latex\": " + latex + ",\n" +
-                "\"Neighbors\": " + neighbours + ",\n" +
-                "}";
+               "\"inverse\": " + inverse + ",\n" +
+               "\"Numbers\": " + numbers + ",\n" +
+               "\"Latex\": " + latex + ",\n" +
+               "\"Neighbors\": " + neighbours + ",\n" +
+               "}";
     }
 
     /**
@@ -93,7 +86,7 @@ public class TextTransformerController {
     @RequestMapping(method = RequestMethod.POST)
     public String post(@PathVariable String text, @RequestBody TextTransformerClass transforms) {
         logger.debug(text);
-        startText = new TextClass(text);
+        TextTransformer startText = new TextClass(text);
         startText = new ExpNum(startText, transforms.isNumbers());
         startText = new ShortcutMod(startText, ShortcutMod.Type.fromName(transforms.getShortcuts()));
         startText = new ToLaTeX(startText, transforms.isLatex());

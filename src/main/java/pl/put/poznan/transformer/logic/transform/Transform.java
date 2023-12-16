@@ -35,14 +35,10 @@ public class Transform extends TextTransformerDecorator {
     public @NotNull String transform() {
         final String transformedText = textToTransform.transform();
         switch (typeOfTransform) {
-            case UPPER:
-                return transformedText.toUpperCase();
-            case LOWER:
-                return transformedText.toLowerCase();
-            case CAPITALIZE:
-                return capitalize(transformedText);
-            default:
-                return transformedText;
+            case UPPER: return transformedText.toUpperCase();
+            case LOWER: return transformedText.toLowerCase();
+            case CAPITALIZE: return capitalize(transformedText);
+            default: return transformedText;
         }
     }
 
