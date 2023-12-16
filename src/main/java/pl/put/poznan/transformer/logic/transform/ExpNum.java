@@ -7,6 +7,7 @@ import pl.put.poznan.transformer.util.DictionaryBuilder;
 import pl.put.poznan.transformer.util.PluralVariant;
 import pl.put.poznan.transformer.util.PolishPluralVariant;
 
+import java.util.List;
 import java.util.Map;
 
 public class ExpNum extends TextTransformerDecorator {
@@ -52,35 +53,13 @@ public class ExpNum extends TextTransformerDecorator {
             number = -number;
         }
 
-        if (number >= 1_000_000_000_000_000_000L) {
-            final long quintillion = number / 1_000_000_000_000_000_000L;
-            result.append(quintillions.getQuantityName(quintillion, ExpNum::numberInWords)).append(" ");
-            number %= 1_000_000_000_000_000_000L;
-        }
-        if (number >= 1_000_000_000_000_000L) {
-            final long quadrillion = number / 1_000_000_000_000_000L;
-            result.append(quadrillions.getQuantityName(quadrillion, ExpNum::numberInWords)).append(" ");
-            number %= 1_000_000_000_000_000L;
-        }
-        if (number >= 1_000_000_000_000L) {
-            final long trillion = number / 1_000_000_000_000L;
-            result.append(trillions.getQuantityName(trillion, ExpNum::numberInWords)).append(" ");
-            number %= 1_000_000_000_000L;
-        }
-        if (number >= 1_000_000_000L) {
-            final long billion = number / 1_000_000_000L;
-            result.append(billions.getQuantityName(billion, ExpNum::numberInWords)).append(" ");
-            number %= 1_000_000_000L;
-        }
-        if (number >= 1_000_000L) {
-            final long million = number / 1_000_000L;
-            result.append(millions.getQuantityName(million, ExpNum::numberInWords)).append(" ");
-            number %= 1_000_000L;
-        }
-        if (number >= 1_000L) {
-            final long thousand = number / 1_000L;
-            result.append(thousands.getQuantityName(thousand, ExpNum::numberInWords)).append(" ");
-            number %= 1_000L;
+        final List<PluralVariant> variants = List.of(quintillions, quadrillions, trillions, billions, millions, thousands);
+        for (long powOf10 = 1_000_000_000_000_000_000L, variant = 0; powOf10 >= 1_000L; powOf10 /= 1_000L, variant++) {
+            final long triplet = number / powOf10;
+            if (triplet > 0) {
+                result.append(variants.get((int) variant).getQuantityName(triplet, ExpNum::numberInWords)).append(" ");
+                number %= powOf10;
+            }
         }
 
         final int hundreds = (int) (number / 100);
