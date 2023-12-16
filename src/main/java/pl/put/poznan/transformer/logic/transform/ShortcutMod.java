@@ -99,7 +99,11 @@ public class ShortcutMod extends TextTransformerDecorator {
         /**
          * Replaces known shortcut expansions with the shortcuts.
          */
-        COMPRESS;
+        COMPRESS,
+        /**
+         * Does not modify the input text.
+         */
+        IDENTITY;
 
         /**
          * Returns the type of shortcut modification from the given name.

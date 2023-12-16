@@ -26,12 +26,12 @@ public class TextTransformerRequestBody {
      * @param latex     indicates whether to use LaTeX formatting
      * @param neighbors indicates whether to consider neighboring elements
      */
-    public TextTransformerRequestBody(@NotNull String text, @NotNull String transform, boolean numbers, boolean inverse,
-                                      @NotNull String shortcuts, boolean latex, boolean neighbors) {
-        this.text = text;
-        this.transform = transform;
+    public TextTransformerRequestBody(String text, String transform, boolean numbers, boolean inverse,
+                                      String shortcuts, boolean latex, boolean neighbors) {
+        this.text = text != null ? text : "";
+        this.transform = transform != null ? transform : "identity";
         this.numbers = numbers;
-        this.shortcuts = shortcuts;
+        this.shortcuts = shortcuts != null ? shortcuts : "identity";
         this.inverse = inverse;
         this.latex = latex;
         this.neighbors = neighbors;

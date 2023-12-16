@@ -89,7 +89,7 @@ public class TextTransformerController {
             logger.error("Invalid service name: " + serviceName);
             return null;
         } else logger.debug("Selected service: " + serviceName);
-        TextTransformer startText = new TextClass(serviceName);
+        TextTransformer startText = new TextClass(transforms.getText());
         startText = new ExpNum(startText, transforms.isNumbers());
         startText = new ShortcutMod(startText, ShortcutMod.Type.fromName(transforms.getShortcuts()));
         startText = new ToLaTeX(startText, transforms.isLatex());
