@@ -30,14 +30,57 @@ public class TextTransformerController {
     public String get(@PathVariable String text, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
+
+        StringBuilder transformOperations = null;
+        //StringBuilder shortcuts = null;
+        boolean inverse = false;
+        boolean numbers = false;
+        boolean latex = false;
+        boolean neighbours = false;
+
+        try {
+            for (String transformation: transforms) {
+                transformation = transformation.toLowerCase();
+                if (Arrays.asList("upper", "lower","capitalize").contains(transformation)) {
+                    if(transformOperations == null) {
+                        transformOperations = new StringBuilder(transformation);
+                    } else {
+                        transformOperations.append(", ");
+                        transformOperations.append(transformation);
+                    }
+                    continue;
+                }
+
+                switch (transformation) {
+                    case "inverse":
+                        inverse = true;
+                        break;
+                    case "numbers":
+                        numbers = true;
+                        break;
+                    case "latex":
+                        latex = true;
+                        break;
+                    case "neighbours":
+                        neighbours = true;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + transformation);
+                }
+            }
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return null;
+        }
         return "{\n" +
-               "\"Transform\": \"none\",\n" +
+               "\"Transform\": " + (transformOperations != null ? transformOperations.toString() : "none") + ",\n" +
                "\"Shortcuts\": \"none\",\n" +
-               "\"inverse\": true,\n" +
-               "\"Numbers\": false,\n" +
-               "\"Latex\": false,\n" +
-               "\"Neighbors\": false,\n" +
-               "}";
+               "\"inverse\": " + inverse  + ",\n" +
+                "\"Numbers\": " + numbers  + ",\n" +
+                "\"Latex\": " + latex + ",\n" +
+                "\"Neighbors\": " + neighbours + ",\n" +
+                "}";
     }
 
     /**
