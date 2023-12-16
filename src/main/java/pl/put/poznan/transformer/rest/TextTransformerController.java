@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Controller class for handling text transformation requests.
  */
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/{serviceName}")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
@@ -21,13 +21,13 @@ public class TextTransformerController {
     /**
      * Handles GET requests for text transformation.
      *
-     * @param text       the input text to be transformed
-     * @param transforms array of transformation types specified in the request
+     * @param serviceName the input text to be transformed
+     * @param transforms  array of transformation types specified in the request
      * @return JSON representation of transformation details
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
-        logger.debug(text);
+    public String get(@PathVariable String serviceName, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
+        logger.debug(serviceName);
         logger.debug(Arrays.toString(transforms));
 
         StringBuilder transformOperations = null;
@@ -79,14 +79,17 @@ public class TextTransformerController {
     /**
      * Handles POST requests for text transformation.
      *
-     * @param text       the input text to be transformed
-     * @param transforms object containing transformation preferences specified in the request body
+     * @param serviceName the service name (should be "transform")
+     * @param transforms  object containing transformation preferences specified in the request body
      * @return transformed text based on the specified preferences
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String post(@PathVariable String text, @RequestBody TextTransformerRequestBody transforms) {
-        logger.debug(text);
-        TextTransformer startText = new TextClass(text);
+    public String post(@PathVariable String serviceName, @RequestBody TextTransformerRequestBody transforms) {
+        if (!serviceName.equals("transform")) {
+            logger.error("Invalid service name: " + serviceName);
+            return null;
+        } else logger.debug("Selected service: " + serviceName);
+        TextTransformer startText = new TextClass(serviceName);
         startText = new ExpNum(startText, transforms.isNumbers());
         startText = new ShortcutMod(startText, ShortcutMod.Type.fromName(transforms.getShortcuts()));
         startText = new ToLaTeX(startText, transforms.isLatex());

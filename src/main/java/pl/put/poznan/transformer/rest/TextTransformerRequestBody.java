@@ -3,10 +3,12 @@ package pl.put.poznan.transformer.rest;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A class representing a text transformer with various options.
+ * Represents a request body for the text transformer. Contains the text various options for
+ * the transformation. This class is used by Spring to deserialize the POST request body.
  */
 public class TextTransformerRequestBody {
 
+    private String text;
     private String transform;
     private boolean numbers;
     private boolean inverse;
@@ -24,14 +26,33 @@ public class TextTransformerRequestBody {
      * @param latex     indicates whether to use LaTeX formatting
      * @param neighbors indicates whether to consider neighboring elements
      */
-    public TextTransformerRequestBody(@NotNull String transform, boolean numbers, boolean inverse,
+    public TextTransformerRequestBody(@NotNull String text, @NotNull String transform, boolean numbers, boolean inverse,
                                       @NotNull String shortcuts, boolean latex, boolean neighbors) {
+        this.text = text;
         this.transform = transform;
         this.numbers = numbers;
         this.shortcuts = shortcuts;
         this.inverse = inverse;
         this.latex = latex;
         this.neighbors = neighbors;
+    }
+
+    /**
+     * Gets the text to be transformed.
+     *
+     * @return the text to be transformed
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * Sets the text to be transformed.
+     *
+     * @param text the text to be transformed
+     */
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
