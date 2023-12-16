@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A class representing a text transformer with various options.
  */
-public class TextTransformerClass {
+public class TextTransformerRequestBody {
 
     private String transform;
     private boolean numbers;
@@ -24,8 +24,8 @@ public class TextTransformerClass {
      * @param latex     indicates whether to use LaTeX formatting
      * @param neighbors indicates whether to consider neighboring elements
      */
-    public TextTransformerClass(@NotNull String transform, boolean numbers, boolean inverse,
-                                @NotNull String shortcuts, boolean latex, boolean neighbors) {
+    public TextTransformerRequestBody(@NotNull String transform, boolean numbers, boolean inverse,
+                                      @NotNull String shortcuts, boolean latex, boolean neighbors) {
         this.transform = transform;
         this.numbers = numbers;
         this.shortcuts = shortcuts;

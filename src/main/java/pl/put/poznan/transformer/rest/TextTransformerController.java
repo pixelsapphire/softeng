@@ -84,7 +84,7 @@ public class TextTransformerController {
      * @return transformed text based on the specified preferences
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String post(@PathVariable String text, @RequestBody TextTransformerClass transforms) {
+    public String post(@PathVariable String text, @RequestBody TextTransformerRequestBody transforms) {
         logger.debug(text);
         TextTransformer startText = new TextClass(text);
         startText = new ExpNum(startText, transforms.isNumbers());
