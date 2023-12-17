@@ -1,15 +1,13 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.transformer.server.rest;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextClass;
-import pl.put.poznan.transformer.logic.TextTransformer;
-import pl.put.poznan.transformer.logic.transform.*;
-
-import java.util.Arrays;
+import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.transform.*;
 
 /**
  * Controller class for handling text transformation requests.

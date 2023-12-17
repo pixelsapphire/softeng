@@ -1,8 +1,8 @@
-package pl.put.poznan.transformer.logic.transform;
+package pl.put.poznan.transformer.server.logic.transform;
 
 import org.jetbrains.annotations.NotNull;
-import pl.put.poznan.transformer.logic.TextTransformer;
-import pl.put.poznan.transformer.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
 
 /**
  * The {@code Reverse} class represents a text transformer decorator that performs

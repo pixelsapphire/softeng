@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.util;
+package pl.put.poznan.transformer.server.util;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -1,8 +1,9 @@
 package pl.put.poznan.transformer.logic.transform;
 
 import org.junit.jupiter.api.Test;
-import pl.put.poznan.transformer.logic.TextClass;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.transform.ReverseTransform;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

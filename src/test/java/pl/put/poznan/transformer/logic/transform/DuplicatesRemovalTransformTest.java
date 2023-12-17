@@ -1,8 +1,9 @@
 package pl.put.poznan.transformer.logic.transform;
 
 import org.junit.Test;
-import pl.put.poznan.transformer.logic.TextClass;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.transform.DuplicatesRemovalTransform;
 
 import static org.junit.Assert.assertEquals;
 

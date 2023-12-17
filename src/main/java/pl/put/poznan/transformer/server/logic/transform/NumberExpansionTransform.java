@@ -1,11 +1,11 @@
-package pl.put.poznan.transformer.logic.transform;
+package pl.put.poznan.transformer.server.logic.transform;
 
 import org.jetbrains.annotations.NotNull;
-import pl.put.poznan.transformer.logic.TextTransformer;
-import pl.put.poznan.transformer.logic.TextTransformerDecorator;
-import pl.put.poznan.transformer.util.DictionaryBuilder;
-import pl.put.poznan.transformer.util.PluralVariant;
-import pl.put.poznan.transformer.util.PolishPluralVariant;
+import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.DictionaryBuilder;
+import pl.put.poznan.transformer.server.util.PluralVariant;
+import pl.put.poznan.transformer.server.util.PolishPluralVariant;
 
 import java.util.List;
 import java.util.Map;
