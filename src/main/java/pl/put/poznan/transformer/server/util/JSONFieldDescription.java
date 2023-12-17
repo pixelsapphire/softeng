@@ -61,10 +61,18 @@ public class JSONFieldDescription {
         return required;
     }
 
+    /**
+     * Escapes the given string for JSON, replacing {@code "} with {@code \"} and {@code \} with {@code \\}.
+     *
+     * @param s the string to be escaped
+     * @return the escaped string
+     */
+    private @NotNull String escape(@NotNull String s) {
+        return s.replace("\\", "\\\\").replace("\"", "\\\"");
+    }
+
     public String toString() {
-        return "{\"name\":\"" + name.replace("\"", "\\\"") +
-               "\",\"type\":\"" + type.replace("\"", "\\\"") +
-               "\",\"description\":\"" + description.replace("\"", "\\\"") +
-               "\",\"required\":" + required + "}";
+        return "{\"name\":\"" + escape(name) + "\",\"type\":\"" + escape(type) +
+               "\",\"description\":\"" + escape(description) + "\",\"required\":" + required + "}";
     }
 }

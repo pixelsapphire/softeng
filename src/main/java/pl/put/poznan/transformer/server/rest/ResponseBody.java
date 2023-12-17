@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class ResponseBody {
 
-    private String message, error;
+    private final String message, error;
 
     /**
      * Constructs a {@code ResponseBody} object with the specified data and error message.
