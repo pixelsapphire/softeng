@@ -44,7 +44,7 @@ public class TextTransformerController {
      * @param transforms  object containing transformation preferences specified in the request body
      * @return transformed text based on the specified preferences
      */
-    @RequestMapping(method = RequestMethod.POST, produces = "text/plain")
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public @NotNull String post(@NotNull @PathVariable String serviceName,
                                 @Nullable @RequestBody TextTransformerRequestBody transforms) {
 
