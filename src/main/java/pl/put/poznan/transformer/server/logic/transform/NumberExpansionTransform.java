@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
 import pl.put.poznan.transformer.server.util.DictionaryBuilder;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 import pl.put.poznan.transformer.server.util.PluralVariant;
 import pl.put.poznan.transformer.server.util.PolishPluralVariant;
 
@@ -87,8 +88,13 @@ public class NumberExpansionTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "Number expansion. Expands numbers in the input text to their word form. Example: '123' -> 'sto dwadzieścia trzy'";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "expandNumbers",
+                "boolean",
+                "Number expansion. Expands numbers in the input text to their word form. Example: '123' -> 'sto dwadzieścia trzy'",
+                false
+        );
     }
 
     private @NotNull String expandNumbers(@NotNull String s) {

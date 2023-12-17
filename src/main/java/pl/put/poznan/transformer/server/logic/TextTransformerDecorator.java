@@ -1,6 +1,7 @@
 package pl.put.poznan.transformer.server.logic;
 
 import org.jetbrains.annotations.NotNull;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 /**
  * The base class for text transformation decorators.
@@ -27,5 +28,5 @@ public abstract class TextTransformerDecorator extends TextTransformer {
      *
      * @return description of the transformation
      */
-    public abstract @NotNull String description();
+    public abstract @NotNull JSONFieldDescription description();
 }

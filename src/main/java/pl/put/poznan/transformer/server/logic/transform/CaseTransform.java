@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 /**
  * The {@code Transform} class represents a text transformer that performs various
@@ -43,8 +44,13 @@ public class CaseTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "Case transform. Converts the text to uppercase, lowercase, or capitalizes it. Example: \"Ala ma kota\" -> \"ALA MA KOTA\", \"ala ma kota\", \"Ala Ma Kota\"";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "transform",
+                "string (\"upper\", \"lower\", \"capitalize\" or \"identity\")",
+                "Case transform. Converts the text to uppercase, lowercase, or capitalizes it. Example: \"Ala ma kota\" -> \"ALA MA KOTA\", \"ala ma kota\", \"Ala Ma Kota\"",
+                false
+        );
     }
 
     /**

@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Represents a JSON field description for the REST API.
  */
-public class TransformDescription {
+public class JSONFieldDescription {
 
     private final String name, type, description;
     private final boolean required;
@@ -18,7 +18,7 @@ public class TransformDescription {
      * @param description the description of the field
      * @param required    indicates whether the field is required ({@code true}) or optional ({@code false})
      */
-    public TransformDescription(@NotNull String name, @NotNull String type, @NotNull String description, boolean required) {
+    public JSONFieldDescription(@NotNull String name, @NotNull String type, @NotNull String description, boolean required) {
         this.name = name;
         this.type = type;
         this.description = description;

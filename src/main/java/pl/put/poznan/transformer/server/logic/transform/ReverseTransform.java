@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 /**
  * The {@code Reverse} class represents a text transformer decorator that performs
@@ -37,8 +38,13 @@ public class ReverseTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "Reverse transformation. Reverses the input text. Example: \"abc\" -> \"cba\"";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "reverse",
+                "boolean",
+                "Reverse transformation. Reverses the input text. Example: \"abc\" -> \"cba\"",
+                false
+        );
     }
 
     /**

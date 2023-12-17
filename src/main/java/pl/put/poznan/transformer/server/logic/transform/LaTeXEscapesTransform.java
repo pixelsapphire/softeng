@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,8 +53,13 @@ public class LaTeXEscapesTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "LaTeX escapes transform. Transforms the text into LaTeX format, applying LaTeX escapes to special characters. Example: \"&\" -> \"\\&\"";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "latex",
+                "boolean",
+                "LaTeX escapes transform. Transforms the text into LaTeX format, applying LaTeX escapes to special characters. Example: \"&\" -> \"\\&\"",
+                false
+        );
     }
 
     // Transforms the text into LaTeX format by replacing special characters

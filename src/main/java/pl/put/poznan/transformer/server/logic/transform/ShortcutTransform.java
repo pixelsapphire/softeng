@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,9 +67,14 @@ public class ShortcutTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "Shortcut expansion/compression. Expands or compresses pre-defined shortcuts" +
-               " in the input text. Example: 'dr' -> 'doktor', 'na przykład' -> 'np.'";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "shortcut",
+                "string (\"expand\", \"compress\" or \"identity\")",
+                "Shortcut expansion/compression. Expands or compresses pre-defined shortcuts" +
+                " in the input text. Example: 'dr' -> 'doktor', 'na przykład' -> 'np.'",
+                false
+        );
     }
 
     /**

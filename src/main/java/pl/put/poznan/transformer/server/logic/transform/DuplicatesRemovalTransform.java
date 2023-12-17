@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
 /**
  * The {@code NeighDel} class is a decorator that removes adjacent duplicates from the text,
@@ -35,8 +36,13 @@ public class DuplicatesRemovalTransform extends TextTransformerDecorator {
     }
 
     @Override
-    public @NotNull String description() {
-        return "Duplicates removal transform. Removes adjacent duplicates from the text. Example: \"Ala ma ma kota\" -> \"Ala ma kota\"";
+    public @NotNull JSONFieldDescription description() {
+        return new JSONFieldDescription(
+                "removeAdjacentDuplicates",
+                "boolean",
+                "Duplicates removal transform. Removes adjacent duplicates from the text. Example: \"Ala ma ma kota\" -> \"Ala ma kota\"",
+                false
+        );
     }
 
     /**
