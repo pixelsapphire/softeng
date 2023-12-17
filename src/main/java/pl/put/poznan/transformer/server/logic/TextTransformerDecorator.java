@@ -23,14 +23,6 @@ public abstract class TextTransformerDecorator extends TextTransformer {
     }
 
     /**
-     * Transforms the text using the decorated text transformer.
-     *
-     * @return the transformed text
-     */
-    @Override
-    public abstract @NotNull String transform();
-
-    /**
      * Returns the description of the transformation performed by the decorator.
      *
      * @return description of the transformation
