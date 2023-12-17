@@ -29,4 +29,11 @@ public abstract class TextTransformerDecorator extends TextTransformer {
      */
     @Override
     public abstract @NotNull String transform();
+
+    /**
+     * Returns the description of the transformation performed by the decorator.
+     *
+     * @return description of the transformation
+     */
+    public abstract @NotNull String description();
 }

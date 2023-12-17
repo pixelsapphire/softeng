@@ -51,6 +51,11 @@ public class LaTeXEscapesTransform extends TextTransformerDecorator {
         return latexCharactersAllowed ? addLaTeXEscapes() : textToTransform.transform();
     }
 
+    @Override
+    public @NotNull String description() {
+        return "LaTeX escapes transform. Transforms the text into LaTeX format, applying LaTeX escapes to special characters. Example: \"&\" -> \"\\&\"";
+    }
+
     // Transforms the text into LaTeX format by replacing special characters
     private @NotNull String addLaTeXEscapes() {
         StringBuilder result = new StringBuilder();

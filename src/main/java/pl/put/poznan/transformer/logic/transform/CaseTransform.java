@@ -42,6 +42,11 @@ public class CaseTransform extends TextTransformerDecorator {
         }
     }
 
+    @Override
+    public @NotNull String description() {
+        return "Case transform. Converts the text to uppercase, lowercase, or capitalizes it. Example: \"Ala ma kota\" -> \"ALA MA KOTA\", \"ala ma kota\", \"Ala Ma Kota\"";
+    }
+
     /**
      * Capitalizes the first letter of each word in the given text.
      *

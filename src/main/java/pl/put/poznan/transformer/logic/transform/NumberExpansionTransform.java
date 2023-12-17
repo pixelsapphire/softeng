@@ -86,6 +86,11 @@ public class NumberExpansionTransform extends TextTransformerDecorator {
         return expandNumbers(textToTransform.transform());
     }
 
+    @Override
+    public @NotNull String description() {
+        return "Number expansion. Expands numbers in the input text to their word form. Example: '123' -> 'sto dwadzieścia trzy'";
+    }
+
     private @NotNull String expandNumbers(@NotNull String s) {
         if (numberExpandAllowed) {
             final StringBuilder result = new StringBuilder();

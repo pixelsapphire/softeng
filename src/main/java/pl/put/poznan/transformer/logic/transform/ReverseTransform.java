@@ -33,7 +33,12 @@ public class ReverseTransform extends TextTransformerDecorator {
      */
     @Override
     public @NotNull String transform() {
-        return inverseAllow ? reverttString(textToTransform.transform()) : textToTransform.transform();
+        return inverseAllow ? revertString(textToTransform.transform()) : textToTransform.transform();
+    }
+
+    @Override
+    public @NotNull String description() {
+        return "Reverse transformation. Reverses the input text. Example: \"abc\" -> \"cba\"";
     }
 
     /**
@@ -42,7 +47,7 @@ public class ReverseTransform extends TextTransformerDecorator {
      * @param input the string to invert
      * @return the inverted input string
      */
-    private @NotNull String reverttString(@NotNull String input) {
+    private @NotNull String revertString(@NotNull String input) {
         return new StringBuilder(input).reverse().toString();
     }
 }

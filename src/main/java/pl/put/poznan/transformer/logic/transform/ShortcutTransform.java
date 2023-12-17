@@ -65,6 +65,12 @@ public class ShortcutTransform extends TextTransformerDecorator {
         return applyShortcutModification(textToTransform.transform());
     }
 
+    @Override
+    public @NotNull String description() {
+        return "Shortcut expansion/compression. Expands or compresses pre-defined shortcuts" +
+               " in the input text. Example: 'dr' -> 'doktor', 'na przykład' -> 'np.'";
+    }
+
     /**
      * Applies the specified shortcut modification to the input text.
      *

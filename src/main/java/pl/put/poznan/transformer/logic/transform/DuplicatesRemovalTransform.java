@@ -34,6 +34,11 @@ public class DuplicatesRemovalTransform extends TextTransformerDecorator {
         else return textToTransform.transform();
     }
 
+    @Override
+    public @NotNull String description() {
+        return "Duplicates removal transform. Removes adjacent duplicates from the text. Example: \"Ala ma ma kota\" -> \"Ala ma kota\"";
+    }
+
     /**
      * Removes adjacent duplicates from the input text.
      *
