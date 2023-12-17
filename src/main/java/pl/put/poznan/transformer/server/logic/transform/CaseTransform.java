@@ -46,7 +46,7 @@ public class CaseTransform extends TextTransformerDecorator {
     @Override
     public @NotNull JSONFieldDescription description() {
         return new JSONFieldDescription(
-                "transform",
+                "caseTransform",
                 "string (\"upper\", \"lower\", \"capitalize\" or \"identity\")",
                 "Case transform. Converts the text to uppercase, lowercase, or capitalizes it. Example: \"Ala ma kota\" -> \"ALA MA KOTA\", \"ala ma kota\", \"Ala Ma Kota\"",
                 false
