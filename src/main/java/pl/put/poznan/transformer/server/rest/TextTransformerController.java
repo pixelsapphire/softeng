@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TransformerBase;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.transform.*;
 
@@ -62,7 +62,7 @@ public class TextTransformerController {
     }
 
     private @NotNull String performTransformation(@NotNull @RequestBody TextTransformerRequestBody transforms) {
-        TextTransformer startText = new TextClass(transforms.getText());
+        TextTransformer startText = new TransformerBase(transforms.getText());
         startText = new NumberExpansionTransform(startText, transforms.isNumbers());
         startText = new ShortcutTransform(startText, ShortcutTransform.Type.fromName(transforms.getShortcuts()));
         startText = new LaTeXEscapesTransform(startText, transforms.isLatex());

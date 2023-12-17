@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer.logic.transform;
 
 import org.junit.Test;
-import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TransformerBase;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.transform.CaseTransform;
 
@@ -12,7 +12,7 @@ public class CaseTransformTest {
     @Test
     public void transformUpper() {
         TextTransformer startText;
-        startText = new TextClass("ala ma kota a jan psa");
+        startText = new TransformerBase("ala ma kota a jan psa");
         CaseTransform testUpper = new CaseTransform(startText, CaseTransform.Type.UPPER);
         assertEquals("ALA MA KOTA A JAN PSA", testUpper.transform());
     }
@@ -20,7 +20,7 @@ public class CaseTransformTest {
     @Test
     public void transformLower() {
         TextTransformer startText;
-        startText = new TextClass("AlA Ma KoTa A JaN pSa");
+        startText = new TransformerBase("AlA Ma KoTa A JaN pSa");
         CaseTransform testLower = new CaseTransform(startText, CaseTransform.Type.LOWER);
         assertEquals("ala ma kota a jan psa", testLower.transform());
     }
@@ -28,7 +28,7 @@ public class CaseTransformTest {
     @Test
     public void transformCapitalize0() {
         TextTransformer startText;
-        startText = new TextClass("ala Ma koTa a JaN pSa");
+        startText = new TransformerBase("ala Ma koTa a JaN pSa");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.CAPITALIZE);
         assertEquals("Ala Ma KoTa A JaN PSa", testCapitalize.transform());
     }
@@ -36,7 +36,7 @@ public class CaseTransformTest {
     @Test
     public void transformCapitalize1() {
         TextTransformer startText;
-        startText = new TextClass("ala i jan");
+        startText = new TransformerBase("ala i jan");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.CAPITALIZE);
         assertEquals("Ala I Jan", testCapitalize.transform());
     }
@@ -44,7 +44,7 @@ public class CaseTransformTest {
     @Test
     public void transformCapitalize2() {
         TextTransformer startText;
-        startText = new TextClass("ala alaA jAaaaan");
+        startText = new TransformerBase("ala alaA jAaaaan");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.CAPITALIZE);
         assertEquals("Ala AlaA JAaaaan", testCapitalize.transform());
     }
@@ -52,7 +52,7 @@ public class CaseTransformTest {
     @Test
     public void transformCapitalize3() {
         TextTransformer startText;
-        startText = new TextClass("1 kot 1 Pies");
+        startText = new TransformerBase("1 kot 1 Pies");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.CAPITALIZE);
         assertEquals("1 Kot 1 Pies", testCapitalize.transform());
     }
@@ -60,7 +60,7 @@ public class CaseTransformTest {
     @Test
     public void transformCapitalize4() {
         TextTransformer startText;
-        startText = new TextClass("aLa Ma KoTa a JaN pSa");
+        startText = new TransformerBase("aLa Ma KoTa a JaN pSa");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.IDENTITY);
         assertEquals("aLa Ma KoTa a JaN pSa", testCapitalize.transform());
     }

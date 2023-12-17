@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer.logic.transform;
 
 import org.junit.Test;
-import pl.put.poznan.transformer.server.logic.TextClass;
+import pl.put.poznan.transformer.server.logic.TransformerBase;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.transform.LaTeXEscapesTransform;
 
@@ -13,7 +13,7 @@ public class LaTeXEscapesTransformTest {
     public void transformLatex1() {
 
         TextTransformer startText;
-        startText = new TextClass(" &,^! $_,,{}sadasdasda~~~*");
+        startText = new TransformerBase(" &,^! $_,,{}sadasdasda~~~*");
         LaTeXEscapesTransform testCapitalize = new LaTeXEscapesTransform(startText, true);
         assertEquals(" \\&,^! \\$\\_,,\\{\\}sadasdasda\\~\\~\\~\\*", testCapitalize.transform());
     }
@@ -22,7 +22,7 @@ public class LaTeXEscapesTransformTest {
     public void transformLatex2() {
 
         TextTransformer startText;
-        startText = new TextClass(" &, $_,,{}sadasdasda~~~*");
+        startText = new TransformerBase(" &, $_,,{}sadasdasda~~~*");
         LaTeXEscapesTransform testCapitalize = new LaTeXEscapesTransform(startText, false);
         assertEquals(" &, $_,,{}sadasdasda~~~*", testCapitalize.transform());
     }
