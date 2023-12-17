@@ -48,6 +48,7 @@ public class ShortcutTransform extends TextTransformerDecorator {
         map.put("Inż.", "Inżynier ");
         map.put("br.", "bieżącego roku ");
         map.put("Br.", "Bieżącego roku ");
+        map.put("A.D.", "Anno Domini");
         map.put("nr", "numer ");
         map.put("Nr", "Numer ");
         map.put("mgr", "magister ");
