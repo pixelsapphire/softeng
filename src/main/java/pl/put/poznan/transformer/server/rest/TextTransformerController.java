@@ -65,9 +65,10 @@ public class TextTransformerController {
         TextTransformer startText = new TransformerBase(transforms.getText());
         startText = new NumberExpansionTransform(startText, transforms.isNumbers());
         startText = new ShortcutTransform(startText, ShortcutTransform.Type.fromName(transforms.getShortcuts()));
-        startText = new LaTeXEscapesTransform(startText, transforms.isLatex());
         startText = new DuplicatesRemovalTransform(startText, transforms.isNeighbors());
-        startText = new CaseTransform(startText, CaseTransform.Type.fromName(transforms.getBasicTransform()));
+        startText = new CaseTransform(startText, CaseTransform.Type.fromName(transforms.getCaseTransform()));
+        startText = new ReverseTransform(startText, transforms.isReverse());
+        startText = new LaTeXEscapesTransform(startText, transforms.isLatex());
         return startText.transform();
     }
 

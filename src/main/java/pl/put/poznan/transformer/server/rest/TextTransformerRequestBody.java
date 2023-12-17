@@ -6,12 +6,13 @@ import org.jetbrains.annotations.NotNull;
  * Represents a request body for the text transformer. Contains the text various options for
  * the transformation. This class is used by Spring to deserialize the POST request body.
  */
+@SuppressWarnings("unused")
 public class TextTransformerRequestBody {
 
     private String text;
-    private String transform;
+    private String caseTransform;
     private boolean numbers;
-    private boolean inverse;
+    private boolean reverse;
     private String shortcuts;
     private boolean latex;
     private boolean neighbors;
@@ -19,20 +20,20 @@ public class TextTransformerRequestBody {
     /**
      * Constructs a {@code TextTransformerClass} with specified parameters.
      *
-     * @param transform the basic transformation string
-     * @param numbers   indicates whether to transform numbers
-     * @param inverse   indicates whether to apply the transformation inversely
-     * @param shortcuts a string containing shortcuts for the transformation
-     * @param latex     indicates whether to use LaTeX formatting
-     * @param neighbors indicates whether to consider neighboring elements
+     * @param caseTransform the name of the case transformation
+     * @param numbers       indicates whether to transform numbers
+     * @param reverse       indicates whether to apply the reverse transformation
+     * @param shortcuts     the name of the shortcuts modification
+     * @param latex         indicates whether to use LaTeX formatting
+     * @param neighbors     indicates whether to consider neighboring elements
      */
-    public TextTransformerRequestBody(String text, String transform, boolean numbers, boolean inverse,
+    public TextTransformerRequestBody(String text, String caseTransform, boolean numbers, boolean reverse,
                                       String shortcuts, boolean latex, boolean neighbors) {
         this.text = text != null ? text : "";
-        this.transform = transform != null ? transform : "identity";
+        this.caseTransform = caseTransform != null ? caseTransform : "identity";
         this.numbers = numbers;
         this.shortcuts = shortcuts != null ? shortcuts : "identity";
-        this.inverse = inverse;
+        this.reverse = reverse;
         this.latex = latex;
         this.neighbors = neighbors;
     }
@@ -60,8 +61,8 @@ public class TextTransformerRequestBody {
      *
      * @return the basic transformation string
      */
-    public @NotNull String getBasicTransform() {
-        return transform;
+    public @NotNull String getCaseTransform() {
+        return caseTransform;
     }
 
     /**
@@ -69,8 +70,8 @@ public class TextTransformerRequestBody {
      *
      * @param transform the new basic transformation string
      */
-    public void setBasicTransform(@NotNull String transform) {
-        this.transform = transform;
+    public void setCaseTransform(@NotNull String transform) {
+        this.caseTransform = transform;
     }
 
     /**
@@ -78,17 +79,17 @@ public class TextTransformerRequestBody {
      *
      * @return true if the transformation is applied inversely, false otherwise
      */
-    public boolean isInverse() {
-        return inverse;
+    public boolean isReverse() {
+        return reverse;
     }
 
     /**
      * Sets whether the transformation should be applied inversely.
      *
-     * @param inverse true to apply the transformation inversely, false otherwise
+     * @param reverse true to apply the transformation inversely, false otherwise
      */
-    public void setInverse(boolean inverse) {
-        this.inverse = inverse;
+    public void setReverse(boolean reverse) {
+        this.reverse = reverse;
     }
 
     /**
