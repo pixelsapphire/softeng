@@ -3,9 +3,9 @@ package pl.put.poznan.transformer.server.logic.transform;
 import org.jetbrains.annotations.NotNull;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
 import pl.put.poznan.transformer.server.logic.TextTransformerDecorator;
+import pl.put.poznan.transformer.server.util.DictionaryBuilder;
 import pl.put.poznan.transformer.server.util.JSONFieldDescription;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,19 +14,9 @@ import java.util.Map;
 public class LaTeXEscapesTransform extends TextTransformerDecorator {
 
     // Mapping of special characters to their LaTeX equivalents
-    private static final Map<Character, String> latexCharacterMappings;
-
-    static {
-        latexCharacterMappings = new HashMap<>();
-        latexCharacterMappings.put('&', "\\&");
-        latexCharacterMappings.put('$', "\\$");
-        latexCharacterMappings.put('#', "\\#");
-        latexCharacterMappings.put('_', "\\_");
-        latexCharacterMappings.put('{', "\\{");
-        latexCharacterMappings.put('}', "\\}");
-        latexCharacterMappings.put('~', "\\~");
-        latexCharacterMappings.put('*', "\\*");
-    }
+    private static final Map<Character, String> latexCharacterMappings = new DictionaryBuilder<Character, String>()
+            .with('&', "\\&").with('$', "\\$").with('#', "\\#").with('_', "\\_")
+            .with('{', "\\{").with('}', "\\}").with('~', "\\~").with('*', "\\*").build();
 
     private final boolean latexCharactersAllowed;
 

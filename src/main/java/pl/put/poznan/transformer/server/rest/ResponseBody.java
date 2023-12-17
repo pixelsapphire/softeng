@@ -23,14 +23,27 @@ public class ResponseBody {
     }
 
     /**
-     * Returns a {@code ResponseBody} object with the specified message.
+     * Returns a {@code ResponseBody} object with the specified message. The message will
+     * be wrapped in quotes. To pass any non-string literal, use {@link #raw(String)}.
      *
      * @param message the message to be returned
      * @return a {@code ResponseBody} object with the specified message
      */
     @Contract("_ -> new")
-    public static @NotNull ResponseBody ok(@NotNull String message) {
-        return new ResponseBody(message, null);
+    public static @NotNull ResponseBody text(@NotNull String message) {
+        return new ResponseBody("\"" + message + "\"", null);
+    }
+
+    /**
+     * Returns a {@code ResponseBody} object with the specified raw data. The data will
+     * not be wrapped in quotes. To pass a string literal, use {@link #text(String)}.
+     *
+     * @param raw the data to be returned
+     * @return a {@code ResponseBody} object with the specified data
+     */
+    @Contract("_ -> new")
+    public static @NotNull ResponseBody raw(@NotNull String raw) {
+        return new ResponseBody(raw, null);
     }
 
     /**
@@ -46,7 +59,7 @@ public class ResponseBody {
 
     @Override
     public String toString() {
-        final String message = this.message != null ? "\"" + this.message + "\"" : "null";
+        final String message = this.message != null ? this.message : "null";
         final String error = this.error != null ? "\"" + this.error + "\"" : "null";
         return "{\"message\":" + message + ",\"error\":" + error + "}";
     }

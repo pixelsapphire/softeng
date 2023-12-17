@@ -5,9 +5,13 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.server.logic.TransformerBase;
 import pl.put.poznan.transformer.server.logic.TextTransformer;
+import pl.put.poznan.transformer.server.logic.TransformerBase;
+import pl.put.poznan.transformer.server.logic.TransformsRegister;
 import pl.put.poznan.transformer.server.logic.transform.*;
+import pl.put.poznan.transformer.server.util.JSONFieldDescription;
+
+import java.util.stream.Collectors;
 
 /**
  * Controller class for handling text transformation requests.
@@ -22,11 +26,10 @@ public class TextTransformerController {
      * Handles GET requests for text transformation.
      *
      * @param serviceName the input text to be transformed
-     * @param transforms  array of transformation types specified in the request
      * @return JSON representation of transformation details
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String serviceName, @RequestParam(value = "transforms", defaultValue = "upper,escape") String[] transforms) {
+    public String get(@PathVariable String serviceName) {
 
         if (serviceName.equals("transform")) logger.debug("Selected service: " + serviceName);
         else {
@@ -34,7 +37,7 @@ public class TextTransformerController {
             return ResponseBody.error("Invalid service name: " + serviceName).toString();
         }
 
-        return ResponseBody.ok(help()).toString();
+        return ResponseBody.raw(help()).toString();
     }
 
     /**
@@ -54,10 +57,10 @@ public class TextTransformerController {
             return ResponseBody.error("Invalid service name: " + serviceName).toString();
         }
 
-        if (transforms == null) return ResponseBody.ok(help()).toString();
+        if (transforms == null) return ResponseBody.raw(help()).toString();
         else {
             logger.debug("Request body: " + transforms);
-            return ResponseBody.ok(performTransformation(transforms)).toString();
+            return ResponseBody.text(performTransformation(transforms)).toString();
         }
     }
 
@@ -73,6 +76,9 @@ public class TextTransformerController {
     }
 
     private @NotNull String help() {
-        return "HELP";
+        return "{\"header\":\"The POST request body structure\",\"content\":[" +
+               new JSONFieldDescription("text", "string", "Input text", true) + "," +
+               TransformsRegister.getTransforms().stream().map((t) -> t.description().toString())
+                                 .collect(Collectors.joining(",")) + "]}";
     }
 }

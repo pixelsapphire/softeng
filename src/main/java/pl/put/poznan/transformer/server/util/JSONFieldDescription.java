@@ -60,4 +60,11 @@ public class JSONFieldDescription {
     public boolean isRequired() {
         return required;
     }
+
+    public String toString() {
+        return "{\"name\":\"" + name.replace("\"", "\\\"") +
+               "\",\"type\":\"" + type.replace("\"", "\\\"") +
+               "\",\"description\":\"" + description.replace("\"", "\\\"") +
+               "\",\"required\":" + required + "}";
+    }
 }
