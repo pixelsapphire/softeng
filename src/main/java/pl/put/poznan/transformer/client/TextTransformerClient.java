@@ -19,7 +19,7 @@ public class TextTransformerClient {
 
         http.setRequestMethod("GET");
         http.connect();
-        System.out.println(new String(http.getInputStream().readAllBytes()));
+        System.out.println(new String(http.getInputStream().readAllBytes(), StandardCharsets.UTF_8));
     }
 
     private static void testPost() throws IOException {
@@ -38,7 +38,7 @@ public class TextTransformerClient {
         writer.close();
         out.close();
         http.connect();
-        System.out.println(new String(http.getInputStream().readAllBytes()));
+        System.out.println(new String(http.getInputStream().readAllBytes(), StandardCharsets.UTF_8));
     }
 
     public static void main(String[] args) throws IOException {
