@@ -90,7 +90,7 @@ public class NumberExpansionTransform extends TextTransformerDecorator {
     @Override
     public @NotNull JSONFieldDescription description() {
         return new JSONFieldDescription(
-                "expandNumbers",
+                "numbers",
                 "boolean",
                 "Number expansion. Expands numbers in the input text to their word form. Example: '123' -> 'sto dwadzieścia trzy'",
                 false
