@@ -4,14 +4,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
-    <!-- Project metadata and version information -->
+    <!-- POM Model Version -->
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Parent project details -->
     <parent>
+        <!-- Maven coordinates of the parent project -->
         <groupId>pl.put.poznan</groupId>
         <artifactId>TextTransformer</artifactId>
-        <version>1.0.0</version> <!-- Update to the latest version -->
+        <version>1.0.0</version>
     </parent>
     
     <!-- Project coordinates -->
@@ -44,38 +45,6 @@
     <!-- Build configuration -->
     <build>
         <plugins>
-            <!-- Maven Site Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
-            </plugin>
-
-            <!-- Maven Project Info Reports Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
-
-            <!-- Maven Surefire Report Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M5</version>
-            </plugin>
-
-            <!-- Maven Javadoc Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                    <show>private</show>
-                </configuration>
-            </plugin>
-
             <!-- Maven JAR Plugin configuration -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -88,25 +57,6 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>
-
-            <!-- Maven Javadoc Plugin configuration -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
-                <configuration>
-                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                    <show>private</show>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
