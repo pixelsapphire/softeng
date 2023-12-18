@@ -1,18 +1,18 @@
-package com.pixelsapphire.keqingui.gui;
+package pl.put.poznan.transformer.client.gui;
 
-import com.pixelsapphire.keqingui.GlobalContext;
-import com.pixelsapphire.keqingui.data.S31n;
-import com.pixelsapphire.keqingui.data.TransformResponse;
-import com.pixelsapphire.keqingui.gui.Messages;
-import com.pixelsapphire.keqingui.gui.ServicesDropdownList;
-import com.pixelsapphire.keqingui.gui.WrapLabel;
-import com.pixelsapphire.keqingui.rest.RESTController;
-import com.pixelsapphire.keqingui.rest.ServicesList.ServicesListContent.ServiceDescription;
-import com.pixelsapphire.keqingui.data.TransformRequest;
 import org.jetbrains.annotations.NotNull;
+import pl.put.poznan.transformer.client.GlobalContext;
+import pl.put.poznan.transformer.client.data.ServicesList.ServicesListContent.ServiceDescription;
+import pl.put.poznan.transformer.client.data.TransformRequest;
+import pl.put.poznan.transformer.client.data.TransformResponse;
+import pl.put.poznan.transformer.client.rest.RESTController;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Objects;
 
 public class MainWindow extends JFrame {
@@ -29,7 +29,7 @@ public class MainWindow extends JFrame {
         setLayout(new GridLayout(1, 1));
         addComponents();
         pack();
-        final var size = new Dimension(800,400);
+        final var size = new Dimension(800, 400);
         setMinimumSize(size);
         setSize(size);
         setLocationRelativeTo(null);
@@ -77,7 +77,7 @@ public class MainWindow extends JFrame {
             if (service != null) {
                 try {
                     final var response = RESTController.transform(GlobalContext.getURL(), buildTransformRequest(service));
-                    final TransformResponse text = S31n.OBJECT_MAPPER.readValue(response, TransformResponse.class);
+                    final TransformResponse text = GlobalContext.OBJECT_MAPPER.readValue(response, TransformResponse.class);
                     bottomTextBox.setText(text.getMessage());
                 } catch (final Exception ex) {
                     Messages.error(ex.getMessage());
@@ -87,7 +87,7 @@ public class MainWindow extends JFrame {
         panel.add(yeetButton);
     }
 
-     private @NotNull TransformRequest buildTransformRequest(@NotNull ServiceDescription service) {
+    private @NotNull TransformRequest buildTransformRequest(@NotNull ServiceDescription service) {
         return new TransformRequest(topTextBox.getText()).with(service.getName(), true);
-     }
+    }
 }

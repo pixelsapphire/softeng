@@ -1,9 +1,10 @@
-package com.pixelsapphire.keqingui.rest;
+package pl.put.poznan.transformer.client.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ServicesList {
 
     private String error;

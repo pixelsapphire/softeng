@@ -1,8 +1,8 @@
-package com.pixelsapphire.keqingui.rest;
+package pl.put.poznan.transformer.client.rest;
 
-import com.pixelsapphire.keqingui.data.TransformRequest;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import pl.put.poznan.transformer.client.data.TransformRequest;
 
 import java.io.IOException;
 import java.io.OutputStream;

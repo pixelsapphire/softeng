@@ -1,4 +1,4 @@
-package com.pixelsapphire.keqingui.data;
+package pl.put.poznan.transformer.client.data;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

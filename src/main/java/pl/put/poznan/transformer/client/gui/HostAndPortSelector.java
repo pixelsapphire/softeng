@@ -1,8 +1,8 @@
-package com.pixelsapphire.keqingui.gui;
+package pl.put.poznan.transformer.client.gui;
 
-import com.pixelsapphire.keqingui.GlobalContext;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import pl.put.poznan.transformer.client.GlobalContext;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -28,11 +28,11 @@ public class HostAndPortSelector {
         myPanel.add(port);
 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+                                                   "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             try {
                 final var popup = new PleaseWaitPopup();
-                return new URL("http://" + hostname.getText()  + ":" + port.getText()  + "/transform");
+                return new URL("http://" + hostname.getText() + ":" + port.getText() + "/transform");
             } catch (IOException ignored) {
                 return prompt();
             }

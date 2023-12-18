@@ -1,8 +1,8 @@
-package com.pixelsapphire.keqingui.gui;
+package pl.put.poznan.transformer.client.gui;
 
-import com.pixelsapphire.keqingui.GlobalContext;
-import com.pixelsapphire.keqingui.rest.ServicesList.ServicesListContent.ServiceDescription;
 import org.jetbrains.annotations.Nullable;
+import pl.put.poznan.transformer.client.GlobalContext;
+import pl.put.poznan.transformer.client.data.ServicesList.ServicesListContent.ServiceDescription;
 
 import javax.swing.JComboBox;
 

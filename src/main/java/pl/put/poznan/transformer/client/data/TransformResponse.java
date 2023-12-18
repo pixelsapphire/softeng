@@ -1,5 +1,6 @@
-package com.pixelsapphire.keqingui.data;
+package pl.put.poznan.transformer.client.data;
 
+@SuppressWarnings("unused")
 public class TransformResponse {
 
     private String message, error;
@@ -8,12 +9,12 @@ public class TransformResponse {
         return error;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
     public void setError(String error) {
         this.error = error;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public void setMessage(String message) {
