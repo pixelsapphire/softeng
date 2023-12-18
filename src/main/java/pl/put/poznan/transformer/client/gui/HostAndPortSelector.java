@@ -17,7 +17,7 @@ public class HostAndPortSelector {
     public static @NotNull URL prompt() {
 
         JTextField hostname = new JTextField(20), port = new JTextField(5);
-        hostname.setText("192.168.1.106"); // TODO change this to localhost
+        hostname.setText("localhost");
         port.setText("1203");
 
         JPanel myPanel = new JPanel();
@@ -28,12 +28,20 @@ public class HostAndPortSelector {
         myPanel.add(port);
 
         int result = JOptionPane.showConfirmDialog(null, myPanel,
-                                                   "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+                                                   "Wprowadzanie parametrów połączenia", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
+            if (hostname.getText().isEmpty()) {
+                Messages.error("Nie podano nazwy hosta!");
+                return prompt();
+            } else if (port.getText().isEmpty()) {
+                Messages.error("Nie podano numeru portu!");
+                return prompt();
+            }
+            new PleaseWaitPopup();
             try {
-                final var popup = new PleaseWaitPopup();
                 return new URL("http://" + hostname.getText() + ":" + port.getText() + "/transform");
-            } catch (IOException ignored) {
+            } catch (IOException e) {
+                Messages.error(e.getMessage());
                 return prompt();
             }
         } else {
