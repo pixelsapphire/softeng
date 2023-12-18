@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.io.IOException;
 import java.net.URL;
 
-public class HostAndPortSelector {
+public class HostAndPortSelectPopup {
 
     @Contract(" -> new")
     public static @NotNull URL prompt() {
