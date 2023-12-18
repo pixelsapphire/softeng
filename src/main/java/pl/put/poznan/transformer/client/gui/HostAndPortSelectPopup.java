@@ -14,6 +14,7 @@ import java.net.URL;
 public class HostAndPortSelectPopup {
 
     @Contract(" -> new")
+    @SuppressWarnings("HttpUrlsUsage")
     public static @NotNull URL prompt() {
 
         JTextField hostname = new JTextField(20), port = new JTextField(5);
@@ -23,7 +24,7 @@ public class HostAndPortSelectPopup {
         JPanel myPanel = new JPanel();
         myPanel.add(new JLabel("nazwa hosta:"));
         myPanel.add(hostname);
-        myPanel.add(Box.createHorizontalStrut(8)); // a spacer
+        myPanel.add(Box.createHorizontalStrut(8));
         myPanel.add(new JLabel("port:"));
         myPanel.add(port);
 
