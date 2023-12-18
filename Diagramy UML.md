@@ -15,7 +15,6 @@ classDiagram
   class TextTransformerDecorator["TextTransformerDecorator : TextTransformer"] {
     +protected TextTransformer textToTransform;
     +public TextTransformerDecorator(@NotNull TextTransformer textToTransform);
-    -public abstract @NotNull String transform();
     +public abstract @NotNull String description();
   }
   class CaseTransform["transform.CaseTransform : TextTransformerDecorator"] {
@@ -89,6 +88,7 @@ class Enum1["public enum Type"]{
     <<enumeration>>
     EXPAND
     COMPRESS
+    IDENTITY
 }
 
   ShortcutTransform .. Enum1
