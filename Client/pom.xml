@@ -3,20 +3,51 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pl.put.poznan</groupId>
+        <artifactId>TextTransformer</artifactId>
+        <version>1.0.0</version> <!-- Update to the latest version -->
+    </parent>
     
-    <groupId>com.example</groupId>
-    <artifactId>my-project</artifactId>
+    <groupId>pl.put.poznan</groupId>
+    <artifactId>TextTransformerClient</artifactId>
     <version>1.0.0</version>
     
     <properties>
-        <!-- Define project properties here -->
+        <!-- Java Version -->
+        <java.version>11</java.version>
     </properties>
     
     <dependencies>
-        <!-- Define project dependencies here -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.13.0</version><!-- Use the latest version -->
+        </dependency>
+
+        <!-- Jackson Databind (for object serialization/deserialization) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version><!-- Use the latest version -->
+        </dependency>
     </dependencies>
     
     <build>
-        <!-- Define build configurations here -->
+       <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version><!-- Use the latest version -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>pl.put.poznan.transformer.client.TextTransformerClient</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+       </plugins>
     </build>
 </project>

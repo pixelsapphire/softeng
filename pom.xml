@@ -4,18 +4,42 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.example</groupId>
-    <artifactId>my-project</artifactId>
+    <groupId>pl.put.poznan</groupId>
+    <artifactId>TextTransformer</artifactId>
     <version>1.0.0</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version> <!-- Update to the latest version -->
+    </parent>
+
+    <packaging>pom</packaging>
     
     <properties>
         <!-- Define project properties here -->
     </properties>
     
     <dependencies>
-        <!-- Define project dependencies here -->
+    <!-- JetBrains annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     
+    <modules>
+        <module>Server</module>
+        <module>Client</module>
+    </modules>
+
     <build>
         <!-- Define build configurations here -->
     </build>

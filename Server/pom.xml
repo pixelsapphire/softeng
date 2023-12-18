@@ -9,20 +9,20 @@
 
     <!-- Parent Project Information (Spring Boot Starter Parent) -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version> <!-- Update to the latest version -->
+        <groupId>pl.put.poznan</groupId>
+        <artifactId>TextTransformer</artifactId>
+        <version>1.0.0</version> <!-- Update to the latest version -->
     </parent>
 
     <!-- Project Coordinates -->
     <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
-    <version>0.1</version>
+    <artifactId>TextTransformerServer</artifactId>
+    <version>1.0.0</version>
 
     <!-- Project Properties -->
     <properties>
         <!-- Java Version -->
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <!-- Project Dependencies -->
@@ -46,13 +46,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <!-- Exclude JUnit Vintage Engine -->
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- JSON Path -->
@@ -60,13 +53,6 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- JetBrains Annotations -->
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
         </dependency>
     </dependencies>
 
