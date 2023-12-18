@@ -1,79 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Maven Project Object Model (POM) for a Spring Boot project -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+         
     <!-- POM Model Version -->
     <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>pl.put.poznan</groupId>
+    <artifactId>TextTransformer</artifactId>
+    <version>1.0.0</version>
 
-    <!-- Parent Project Information (Spring Boot Starter Parent) -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>3.2.0</version> <!-- Update to the latest version -->
     </parent>
 
-    <!-- Project Coordinates -->
-    <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
-    <version>0.1</version>
-
-    <!-- Project Properties -->
+    <packaging>pom</packaging>
+    
     <properties>
         <!-- Java Version -->
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
-
-    <!-- Project Dependencies -->
+    
     <dependencies>
-        <!-- Spring Boot Web Starter -->
+    <!-- JetBrains annotations -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.1.0</version>
         </dependency>
-
-        <!-- JUnit -->
+    <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Spring Boot Test Starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <!-- Exclude JUnit Vintage Engine -->
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- JSON Path -->
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- JetBrains Annotations -->
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
-        </dependency>
     </dependencies>
+    
+    <modules>
+        <module>Server</module>
+        <module>Client</module>
+    </modules>
 
-    <!-- Build Configuration -->
     <build>
         <plugins>
-            <!-- Maven Site Plugin -->
+        <!-- Maven Site Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -105,38 +78,24 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot Maven Plugin -->
+             <!-- Maven Javadoc Plugin configuration -->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.5</version> <!-- Use the latest version -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                    <show>private</show>
+                </configuration>
                 <executions>
-                    <!-- Repackage the JAR during the build -->
                     <execution>
+                        <id>attach-javadocs</id>
                         <goals>
-                            <goal>repackage</goal>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-    <!-- Project Repositories -->
-    <repositories>
-        <!-- Spring Releases Repository -->
-        <repository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </repository>
-    </repositories>
-
-    <!-- Project Plugin Repositories -->
-    <pluginRepositories>
-        <!-- Spring Releases Plugin Repository -->
-        <pluginRepository>
-            <id>spring-releases</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>

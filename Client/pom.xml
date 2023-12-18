@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven Project Object Model (POM) file for TextTransformerClient -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <!-- POM Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent project details -->
+    <parent>
+        <!-- Maven coordinates of the parent project -->
+        <groupId>pl.put.poznan</groupId>
+        <artifactId>TextTransformer</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    
+    <!-- Project coordinates -->
+    <groupId>pl.put.poznan</groupId>
+    <artifactId>TextTransformerClient</artifactId>
+    <version>1.0.0</version>
+    
+    <!-- Java version property -->
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    
+    <!-- Project dependencies -->
+    <dependencies>
+        <!-- Jackson Core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.13.0</version><!-- Use the latest version -->
+        </dependency>
+
+        <!-- Jackson Databind for object serialization/deserialization -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version><!-- Use the latest version -->
+        </dependency>
+    </dependencies>
+    
+    <!-- Build configuration -->
+    <build>
+        <plugins>
+            <!-- Maven JAR Plugin configuration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version><!-- Use the latest version -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>pl.put.poznan.transformer.client.TextTransformerClient</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
