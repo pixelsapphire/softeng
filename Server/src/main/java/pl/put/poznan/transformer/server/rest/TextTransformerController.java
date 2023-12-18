@@ -23,13 +23,13 @@ public class TextTransformerController {
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     /**
-     * Handles GET requests for text transformation.
+     * Handles help requests (which is counted as any GET request).
      *
      * @param serviceName the input text to be transformed
      * @return JSON representation of transformation details
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String serviceName) {
+    public String helpRequest(@PathVariable @NotNull String serviceName) {
 
         if (serviceName.equals("transform")) logger.debug("Selected service: " + serviceName);
         else {
@@ -48,8 +48,8 @@ public class TextTransformerController {
      * @return transformed text based on the specified preferences
      */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public @NotNull String post(@NotNull @PathVariable String serviceName,
-                                @Nullable @RequestBody TextTransformerRequestBody transforms) {
+    public @NotNull String transformRequest(@NotNull @PathVariable String serviceName,
+                                            @Nullable @RequestBody TextTransformerRequestBody transforms) {
 
         if (serviceName.equals("transform")) logger.debug("Selected service: " + serviceName);
         else {
@@ -60,7 +60,7 @@ public class TextTransformerController {
         if (transforms == null) return ResponseBody.raw(help()).toString();
         else {
             logger.debug("Request body: " + transforms);
-            return ResponseBody.text(performTransformation(transforms)).toString();
+            return ResponseBody.text(performTransformation(transforms).replace("\\", "\\\\")).toString();
         }
     }
 
