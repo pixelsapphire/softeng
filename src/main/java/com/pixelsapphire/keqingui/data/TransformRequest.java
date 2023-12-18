@@ -32,7 +32,7 @@ public class TransformRequest {
     }
 
     private String jsonLiteral(@Nullable Object value) {
-        if (value instanceof final String str) return "\"" + str + "\"";
+        if (value instanceof String) return "\"" + value + "\"";
         else return Objects.toString(value);
     }
 }
