@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.app;
+package pl.put.poznan.transformer.server.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
