@@ -2,35 +2,41 @@ package pl.put.poznan.transformer.client.gui;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.put.poznan.transformer.client.GlobalContext;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * {@code HostAndPortSelectPopup} is responsible for displaying a popup
+ * window that prompts the user to enter the hostname and port number.
+ */
 public class HostAndPortSelectPopup {
 
+    /**
+     * Displays a popup window that prompts the user to enter the hostname and port number.
+     * If the user clicks OK, the popup window is closed and the entered values are returned
+     * as a {@link URL} object. If the user clicks Cancel, the application is terminated.
+     *
+     * @return a {@link URL} object representing the entered hostname and port number
+     */
     @Contract(" -> new")
     @SuppressWarnings("HttpUrlsUsage")
     public static @NotNull URL prompt() {
 
-        JTextField hostname = new JTextField(20), port = new JTextField(5);
+        final JTextField hostname = new JTextField(20), port = new JTextField(5);
         hostname.setText("localhost");
         port.setText("1203");
 
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("nazwa hosta:"));
-        myPanel.add(hostname);
-        myPanel.add(Box.createHorizontalStrut(8));
-        myPanel.add(new JLabel("port:"));
-        myPanel.add(port);
+        final var controls = new JPanel();
+        controls.add(new JLabel("nazwa hosta:"));
+        controls.add(hostname);
+        controls.add(Box.createHorizontalStrut(8));
+        controls.add(new JLabel("port:"));
+        controls.add(port);
 
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                                                   "Wprowadzanie parametrów połączenia", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, controls, "Wprowadzanie parametrów połączenia",
+                                          JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             if (hostname.getText().isEmpty()) {
                 Messages.error("Nie podano nazwy hosta!");
                 return prompt();
@@ -38,7 +44,7 @@ public class HostAndPortSelectPopup {
                 Messages.error("Nie podano numeru portu!");
                 return prompt();
             }
-            new PleaseWaitPopup();
+            new Messages.PleaseWaitPopup();
             try {
                 return new URL("http://" + hostname.getText() + ":" + port.getText() + "/transform");
             } catch (IOException e) {
@@ -48,22 +54,6 @@ public class HostAndPortSelectPopup {
         } else {
             System.exit(0);
             return prompt();
-        }
-    }
-
-    private static class PleaseWaitPopup extends JFrame {
-
-        public PleaseWaitPopup() {
-            setLocationRelativeTo(null);
-            final var label = new JLabel("Proszę czekać...");
-            final Border currentBorder = label.getBorder(), emptyBorder = new EmptyBorder(16, 16, 16, 16);
-            label.setBorder(currentBorder == null ? emptyBorder : new CompoundBorder(emptyBorder, currentBorder));
-            add(label);
-            pack();
-            setResizable(false);
-            setVisible(true);
-            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            GlobalContext.addUpdateListener(this::dispose);
         }
     }
 }

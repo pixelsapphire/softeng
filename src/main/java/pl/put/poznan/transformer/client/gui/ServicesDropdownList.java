@@ -6,8 +6,14 @@ import pl.put.poznan.transformer.client.data.ServicesList.ServicesListContent.Se
 
 import javax.swing.JComboBox;
 
+/**
+ * The dropdown list of available services.
+ */
 public class ServicesDropdownList extends JComboBox<String> {
 
+    /**
+     * Creates the dropdown list of available services.
+     */
     public ServicesDropdownList() {
         final var services = GlobalContext.getAvailableServices();
         if (!services.isEmpty()) services.stream().map(ServiceDescription::getName).forEach(this::addItem);
@@ -17,6 +23,11 @@ public class ServicesDropdownList extends JComboBox<String> {
         }
     }
 
+    /**
+     * Returns the currently selected service description.
+     *
+     * @return the selected service
+     */
     public @Nullable ServiceDescription getSelectedService() {
         final var services = GlobalContext.getAvailableServices();
         return services.isEmpty() ? null : services.get(getSelectedIndex());

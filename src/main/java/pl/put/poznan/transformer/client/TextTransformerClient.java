@@ -6,8 +6,16 @@ import pl.put.poznan.transformer.client.gui.Messages;
 
 import java.io.IOException;
 
+/**
+ * The main class of the application.
+ */
 public class TextTransformerClient {
 
+    /**
+     * Application entry point.
+     *
+     * @param args ignored
+     */
     public static void main(String[] args) {
         GlobalContext.setURL(HostAndPortSelectPopup.prompt());
         try {

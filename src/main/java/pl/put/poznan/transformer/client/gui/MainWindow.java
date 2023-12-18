@@ -15,14 +15,30 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Objects;
 
+/**
+ * Main window of the application.
+ */
 public class MainWindow extends JFrame {
 
-    private final JTextArea topTextBox = new JTextArea(), bottomTextBox = new JTextArea();
+    /**
+     * Stores the text to be transformed.
+     */
+    private final JTextArea topTextBox = new JTextArea();
+    /**
+     * Stores the transformed text.
+     */
+    private final JTextArea bottomTextBox = new JTextArea();
+    /**
+     * The dropdown list of available services.
+     */
     private ServicesDropdownList serviceDropdown;
 
+    /**
+     * Creates the main window.
+     */
     public MainWindow() {
 
-        super("KeqinGUI");
+        super("Text Transformer Client");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -35,6 +51,9 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Adds all components to the window.
+     */
     private void addComponents() {
 
         final var mainPanel = new JPanel();
@@ -53,6 +72,11 @@ public class MainWindow extends JFrame {
         mainPanel.add(bottomTextBox);
     }
 
+    /**
+     * Adds the controls to the center panel.
+     *
+     * @param panel the panel to add the controls to, should be the center panel
+     */
     private void addControls(@NotNull JPanel panel) {
 
         final var dropdownPanel = new JPanel();
@@ -70,9 +94,18 @@ public class MainWindow extends JFrame {
             serviceDescription.setText(selectedService.getDescription());
         });
 
-        final var yeetButton = new JButton("Perform transformation!");
+        panel.add(transformationButton());
+    }
 
-        yeetButton.addActionListener(e -> {
+    /**
+     * Creates the "perform transformation" button.
+     *
+     * @return the initialized button
+     */
+    @NotNull
+    private JButton transformationButton() {
+        final var performTransformation = new JButton("Perform transformation!");
+        performTransformation.addActionListener(e -> {
             final var service = serviceDropdown.getSelectedService();
             if (service != null) {
                 try {
@@ -84,9 +117,15 @@ public class MainWindow extends JFrame {
                 }
             }
         });
-        panel.add(yeetButton);
+        return performTransformation;
     }
 
+    /**
+     * Builds a {@link TransformRequest} with the specified service and the text from the top text box.
+     *
+     * @param service the service to be used for transformation
+     * @return the built {@link TransformRequest} object
+     */
     private @NotNull TransformRequest buildTransformRequest(@NotNull ServiceDescription service) {
         return new TransformRequest(topTextBox.getText()).with(service.getName(), true);
     }

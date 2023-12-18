@@ -12,6 +12,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * This class contains methods responsible for communication with the REST API.
+ */
 public class RESTController {
 
     @Contract("_ -> new")

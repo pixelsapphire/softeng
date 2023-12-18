@@ -1,5 +1,12 @@
 package pl.put.poznan.transformer.client.data;
 
+import pl.put.poznan.transformer.client.rest.RESTController;
+
+/**
+ * This class represents a transformed text. It is used by Jackson Databind to deserialize the response from the server.
+ *
+ * @see RESTController#transform
+ */
 @SuppressWarnings("unused")
 public class TransformResponse {
 

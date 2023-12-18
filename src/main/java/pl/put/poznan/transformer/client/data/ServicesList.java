@@ -1,9 +1,15 @@
 package pl.put.poznan.transformer.client.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import pl.put.poznan.transformer.client.rest.RESTController;
 
 import java.util.List;
 
+/**
+ * This class represents a list of services. It is used by Jackson Databind to deserialize the response from the server.
+ *
+ * @see RESTController#getServices
+ */
 @SuppressWarnings("unused")
 public class ServicesList {
 
