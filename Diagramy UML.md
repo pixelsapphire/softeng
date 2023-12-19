@@ -1,6 +1,6 @@
 ```mermaid
 ---
-title: Diagram Logiki -pl.put.poznan.transformer.server.logic
+title: Diagram Logiki Serwera -pl.put.poznan.transformer.server.logic
 ---
 classDiagram
   class TextTransformer{
