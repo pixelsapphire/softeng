@@ -119,7 +119,7 @@ click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/S
 ### Diagram Klas Rest dla Serwera -pl.put.poznan.transformer.server.rest
 ```mermaid
 classDiagram
-    Class ResponseBody{
+    Class ResponseBody {
         private final String message, error;
         private ResponseBody(@Nullable String data, @Nullable String errorMessage);
         public static @NotNull ResponseBody text(@NotNull String message);
@@ -130,13 +130,11 @@ classDiagram
     click ResponseBody href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/ResponseBody.java"
     class TextTransformerController{
         private static final Logger logger;
-        //@RequestMapping(method = RequestMethod.GET, produces = "application/json")
         public String helpRequest(@PathVariable @NotNull String serviceName);
-        //@RequestMapping(method = RequestMethod.POST, produces = "application/json")
         public @NotNull String transformRequest(@NotNull @PathVariable String serviceName, @Nullable @RequestBody TextTransformerRequestBody transforms);
         private @NotNull String performTransformation(@NotNull @RequestBody TextTransformerRequestBody transforms);
         private @NotNull String help();
     }
     click TextTransformerController href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/TextTransformerController.java"
-    ResponseBody .. TextTransformerController
+      ResponseBody .. TextTransformerController
 ```
