@@ -3,7 +3,7 @@
 title: Diagram Logiki -pl.put.poznan.transformer.server.logic
 ---
 classDiagram
-  class TextTransformer {
+  class TextTransformer["TextTransformer"]("./Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java") {
     protected String text;
     public @NotNull String getText();
     public abstract @NotNull String transform();
