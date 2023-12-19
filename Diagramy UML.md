@@ -138,5 +138,13 @@ classDiagram
         private @NotNull String help();
     }
     click TextTransformerController href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/TextTransformerController.java"
+    class logic["import pl.put.poznan.transformer.server.logic.*"]{
+        Class TextTransformer;
+        Class TransformerBase;
+        Class TransformsRegister;
+        Classes transform.*;
+    }
+    click logic href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic"
+      logic .. TextTransformerController
       ResponseBody .. TextTransformerController
 ```
