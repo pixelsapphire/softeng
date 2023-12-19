@@ -193,3 +193,34 @@ classDiagram
       logic .. TextTransformerController
       ResponseBody .. TextTransformerController
 ```
+### Diagram Klas Aplikacji dla Serwera -pl.put.poznan.transformer.server.app
+```mermaid
+classDiagram
+    class TextTransformerServer{
+        +main(String[] args) void$;
+    }
+    click TextTransformerServer href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/app/TextTransformerServer.java"
+    class logic["import pl.put.poznan.transformer.server.logic.transform.*"]{
+       Class CaseTransform;  
+       Class DuplicatesRemovalTransform;  
+       Class LaTeXEscapesTransform;  
+       Class NumberExpansionTransform;  
+       Class ReverseTransform;  
+       Class ShortcutTransform;
+    }
+    click logic href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform"
+    class TransformerBase["TransformerBase : TextTransformer"]{
+        +TransformerBase(@NotNull String str);
+        +transform() @NotNull String;
+    }
+    click TransformerBase href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TransformerBase.java"
+    class TransformsRegister {
+        -List<TextTransformerDecorator> final transforms$;
+        +register(@NotNull TextTransformerDecorator transform) void$;
+        +getTransforms() @NotNull @UnmodifiableView List<TextTransformerDecorator>$;
+    }
+    click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TransformsRegister.java"
+    TextTransformerServer .. TransformerBase
+    TextTransformerServer .. logic
+    TextTransformerServer .. TransformsRegister
+```
