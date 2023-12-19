@@ -28,7 +28,7 @@ class Enum["+ enum Type"]{
     UPPER
     LOWER
     CAPITALIZE
-    SENTECE_CAPITALIZE
+    SENTENCE_CAPITALIZE
     IDENTITY
 }
 class DuplicatesRemovalTransform["transform.DuplicatesRemovalTransform : TextTransformerDecorator"] {
@@ -124,7 +124,7 @@ click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/S
   TextTransformerDecorator <|-- CaseTransform
   TextTransformerDecorator .. util : JSONFieldDescription
   CaseTransform .. util : JSONFieldDescription
-  DuplicatesRemovalTransform .. : JSONFieldDescription
+  DuplicatesRemovalTransform .. util : JSONFieldDescription
   LaTeXEscapesTransform .. util : JSONFieldDescription
   NumberExpansionTransform .. util : all
   ReverseTransform .. util : JSONFieldDescription
