@@ -1,3 +1,9 @@
+<script>
+  const callbackFunction = function () {
+    var link="https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java"
+    window.open(link, "_blank");
+  };
+</script>
 ```mermaid
 ---
 title: Diagram Logiki -pl.put.poznan.transformer.server.logic
@@ -8,7 +14,7 @@ classDiagram
     public @NotNull String getText();
     public abstract @NotNull String transform();
   }
-  click TextTransformer href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java"
+  click TextTransformer callbackFunction() "TextTransformer"
   class TextClass["TextClass : TextTransformer"] {
     +public TextClass(@NotNull String str);
     ~public @NotNull String transform();
