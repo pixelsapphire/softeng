@@ -119,9 +119,8 @@ click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/S
 ### Diagram Klas Rest dla Serwera -pl.put.poznan.transformer.server.rest
 ```mermaid
 classDiagram
-    Class ResponseBody {
-        private final String message;
-        private final String error;
+    class ResponseBody {
+        private final String message, error;
         private ResponseBody(@Nullable String data, @Nullable String errorMessage);
         public static @NotNull ResponseBody text(@NotNull String message);
         public static @NotNull ResponseBody raw(@NotNull String raw);
