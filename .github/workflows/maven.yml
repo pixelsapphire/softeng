@@ -16,3 +16,16 @@ jobs:
           cache: maven
       - name: Validate, build and run tests
         run: mvn --batch-mode --update-snapshots verify
+
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc --file pom.xml
+
+      - name: Publish Javadoc to GitHub Pages
+        if: success()
+        run: |
+          mkdir -p docs
+          cp -R target/site/apidocs/* docs/
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
