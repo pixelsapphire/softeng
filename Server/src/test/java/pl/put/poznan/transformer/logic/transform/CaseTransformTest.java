@@ -70,5 +70,7 @@ public class CaseTransformTest {
         startText = new TransformerBase("darek ma zegarek? braun ma gaśnicę!     ola ma jabola. bolek ma teczkę.");
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.SENTECE_CAPITALIZE);
         assertEquals("Darek ma zegarek? Braun ma gaśnicę!     Ola ma jabola. Bolek ma teczkę.", testCapitalize.transform());
+        assertEquals("Strona to www.wp.pl",(new CaseTransform(new TransformerBase("strona to www.wp.pl"), CaseTransform.Type.SENTECE_CAPITALIZE)).transform());
+        //System.out.println((new CaseTransform(new TransformerBase("strona to www.wp.pl"), CaseTransform.Type.SENTECE_CAPITALIZE)).transform());
     }
 }
