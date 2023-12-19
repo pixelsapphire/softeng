@@ -91,8 +91,20 @@ class Enum1["public enum Type"]{
     COMPRESS
     IDENTITY
 }
-
+class TransformerBase["TransformerBase : TextTransformer"]{
+    +public TransformerBase(@NotNull String str);
+    ~public @NotNull String transform();
+}
+click TransformerBase href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TransformerBase.java"
+class TransformsRegister {
+    private static final List<TextTransformerDecorator> transforms;
+    public static void register(@NotNull TextTransformerDecorator transform);
+    public static @NotNull @UnmodifiableView List<TextTransformerDecorator> getTransforms()
+}
+click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TransformsRegister.java"
+  TransformsRegister "1" --> "*" TextTransformerDecorator
   ShortcutTransform .. Enum1
+  TextTransformer <|-- TransformerBase
   TextTransformerDecorator <|-- ShortcutTransform
   TextTransformerDecorator <|-- ReverseTransform
   TextTransformerDecorator <|-- NumberExpansionTransform
@@ -100,6 +112,5 @@ class Enum1["public enum Type"]{
   TextTransformerDecorator <|-- DuplicatesRemovalTransform
   CaseTransform .. Enum
   TextTransformer <|-- TextTransformerDecorator
-  TextTransformer <|-- TextClass
   TextTransformerDecorator <|-- CaseTransform
 ```
