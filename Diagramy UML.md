@@ -1,7 +1,5 @@
+### Diagram Logiki Serwera -pl.put.poznan.transformer.server.logic
 ```mermaid
----
-title: Diagram Logiki Serwera -pl.put.poznan.transformer.server.logic
----
 classDiagram
   class TextTransformer{
     protected String text;
@@ -30,6 +28,7 @@ class Enum["public enum Type"]{
     UPPER
     LOWER
     CAPITALIZE
+    SENTECE_CAPITALIZE
     IDENTITY
 }
 class DuplicatesRemovalTransform["transform.DuplicatesRemovalTransform : TextTransformerDecorator"] {
@@ -116,4 +115,28 @@ click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/S
   CaseTransform .. Enum
   TextTransformer <|-- TextTransformerDecorator
   TextTransformerDecorator <|-- CaseTransform
+```
+### Diagram Klas Rest dla Serwera -pl.put.poznan.transformer.server.rest
+```mermaid
+classDiagram
+    Class ResponseBody{
+        private final String message, error;
+        private ResponseBody(@Nullable String data, @Nullable String errorMessage);
+        public static @NotNull ResponseBody text(@NotNull String message);
+        public static @NotNull ResponseBody raw(@NotNull String raw);
+        public static @NotNull ResponseBody error(@NotNull String error);
+        public String toString();
+    }
+    click ResponseBody href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/ResponseBody.java"
+    class TextTransformerController{
+        private static final Logger logger;
+        //@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+        public String helpRequest(@PathVariable @NotNull String serviceName);
+        //@RequestMapping(method = RequestMethod.POST, produces = "application/json")
+        public @NotNull String transformRequest(@NotNull @PathVariable String serviceName, @Nullable @RequestBody TextTransformerRequestBody transforms);
+        private @NotNull String performTransformation(@NotNull @RequestBody TextTransformerRequestBody transforms);
+        private @NotNull String help();
+    }
+    click TextTransformerController href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/TextTransformerController.java"
+    ResponseBody .. TextTransformerController
 ```
