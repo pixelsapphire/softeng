@@ -39,6 +39,7 @@ public class CaseTransform extends TextTransformerDecorator {
             case UPPER: return transformedText.toUpperCase();
             case LOWER: return transformedText.toLowerCase();
             case CAPITALIZE: return caseTransformation(transformedText);
+            case SENTECE_CAPITALIZE: return SentenceCaseTransformation(transformedText);
             default: return transformedText;
         }
     }
@@ -77,6 +78,21 @@ public class CaseTransform extends TextTransformerDecorator {
 
         return result.toString().trim();
     }
+    private @NotNull String SentenceCaseTransformation(@NotNull String text){
+        final StringBuilder result = new StringBuilder();
+        boolean dot=true;
+        for(char letter : text.toCharArray()){
+            if (Character.isLetter(letter) && dot){
+                dot=false;
+                result.append(Character.toUpperCase(letter));
+                continue;
+            } else if (".!?".contains(String.valueOf(letter))) {
+                dot=true;
+            }
+            result.append(letter);
+        }
+        return result.toString().trim();
+    }
 
     /**
      * The type of transformation to be applied.
@@ -98,7 +114,9 @@ public class CaseTransform extends TextTransformerDecorator {
         /**
          * No transformation.
          */
-        IDENTITY;
+        IDENTITY,
+
+        SENTECE_CAPITALIZE;
 
         /**
          * Returns the type of transformation from the given name.

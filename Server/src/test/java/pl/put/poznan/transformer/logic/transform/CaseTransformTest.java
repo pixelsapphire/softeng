@@ -64,4 +64,11 @@ public class CaseTransformTest {
         CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.IDENTITY);
         assertEquals("aLa Ma KoTa a JaN pSa", testCapitalize.transform());
     }
+    @Test
+    public void transformCapitalize5() {
+        TextTransformer startText;
+        startText = new TransformerBase("darek ma zegarek? braun ma gaśnicę!     ola ma jabola. bolek ma teczkę.");
+        CaseTransform testCapitalize = new CaseTransform(startText, CaseTransform.Type.SENTECE_CAPITALIZE);
+        assertEquals("Darek ma zegarek? Braun ma gaśnicę!     Ola ma jabola. Bolek ma teczkę.", testCapitalize.transform());
+    }
 }
