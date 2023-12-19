@@ -145,6 +145,37 @@ classDiagram
         Classes transform.*;
     }
     click logic href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic"
+    class util{
+        Class JSONFieldDescription;
+    }
+    click util href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/util/JSONFieldDescription.java"
+    class TextTransformerRequestBody{
+        private String text;
+        private String caseTransform;
+        private boolean numbers;
+        private boolean reverse;
+        private String shortcuts;
+        private boolean latex;
+        private boolean neighbors;
+        public TextTransformerRequestBody(String text, String caseTransform, boolean numbers, boolean reverse, String shortcuts, boolean latex, boolean neighbors);
+        public String getText();
+        public void setText(String text);
+        public @NotNull String getCaseTransform();
+        public void setCaseTransform(@NotNull String transform);
+        public boolean isReverse();
+        public void setReverse(boolean reverse);
+        public boolean isNumbers();
+        public void setNumbers(boolean numbers);
+        public @NotNull String getShortcuts();
+        public void setShortcuts(@NotNull String shortcuts);
+        public boolean isLatex();
+        public void setLatex(boolean latex);
+        public boolean isNeighbors();
+        public void setNeighbors(boolean neighbors);
+    }
+    click TextTransformerRequestBody href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/TextTransformerRequestBody.java"
+      TextTransformerRequestBody .. TextTransformerController
+      util .. TextTransformerController
       logic .. TextTransformerController
       ResponseBody .. TextTransformerController
 ```
