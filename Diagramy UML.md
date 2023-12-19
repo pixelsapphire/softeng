@@ -1,10 +1,12 @@
+```html
 <script>
   const callbackFunction = function () {
     var link="https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java";
     window.open(link, "_blank");
   };
 </script>
-```mermaid
+<body>
+  <pre class="mermaid">
 ---
 title: Diagram Logiki -pl.put.poznan.transformer.server.logic
 ---
@@ -108,4 +110,6 @@ class Enum1["public enum Type"]{
   TextTransformer <|-- TextTransformerDecorator
   TextTransformer <|-- TextClass
   TextTransformerDecorator <|-- CaseTransform
+</pre>
+</body>
 ```
