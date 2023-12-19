@@ -120,7 +120,8 @@ click TransformsRegister href "https://github.com/RubyNaxela/softeng/blob/main/S
 ```mermaid
 classDiagram
     Class ResponseBody {
-        private final String message, error;
+        private final String message;
+        private final String error;
         private ResponseBody(@Nullable String data, @Nullable String errorMessage);
         public static @NotNull ResponseBody text(@NotNull String message);
         public static @NotNull ResponseBody raw(@NotNull String raw);
@@ -130,7 +131,9 @@ classDiagram
     click ResponseBody href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/ResponseBody.java"
     class TextTransformerController{
         private static final Logger logger;
+        //@RequestMapping(method = RequestMethod.GET, produces = "application/json")
         public String helpRequest(@PathVariable @NotNull String serviceName);
+        //@RequestMapping(method = RequestMethod.POST, produces = "application/json")
         public @NotNull String transformRequest(@NotNull @PathVariable String serviceName, @Nullable @RequestBody TextTransformerRequestBody transforms);
         private @NotNull String performTransformation(@NotNull @RequestBody TextTransformerRequestBody transforms);
         private @NotNull String help();
