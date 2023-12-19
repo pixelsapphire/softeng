@@ -174,8 +174,8 @@ classDiagram
         public void setNeighbors(boolean neighbors);
     }
     click TextTransformerRequestBody href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/rest/TextTransformerRequestBody.java"
-      TextTransformerRequestBody .. TextTransformerController
-      util .. TextTransformerController
+      TextTransformerController .. TextTransformerRequestBody
+      TextTransformerController .. util
       logic .. TextTransformerController
       ResponseBody .. TextTransformerController
 ```
