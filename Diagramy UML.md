@@ -9,15 +9,12 @@ classDiagram
     public abstract @NotNull String transform();
   }
   click TextTransformer href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java"
-  class TextClass["TextClass : TextTransformer"] {
-    +public TextClass(@NotNull String str);
-    ~public @NotNull String transform();
-  }
   class TextTransformerDecorator["TextTransformerDecorator : TextTransformer"] {
     +protected TextTransformer textToTransform;
     +public TextTransformerDecorator(@NotNull TextTransformer textToTransform);
     +public abstract @NotNull String description();
   }
+  click TextTransformerDecorator href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformerDecorator.java"
   class CaseTransform["transform.CaseTransform : TextTransformerDecorator"] {
     +private final Type typeOfTransform;
     +public CaseTransform(@NotNull TextTransformer textToTransform, @NotNull Type typeOfTransform);
@@ -25,7 +22,8 @@ classDiagram
     ~public @NotNull String description(); 
     +private @NotNull String caseTransformation(@NotNull String text);
     +public enum Type;
-}
+  }
+  click CaseTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/CaseTransform.java"
 class Enum["public enum Type"]{
     +public static Type fromName(@NotNull String name);
     <<enumeration>>
@@ -41,6 +39,7 @@ class DuplicatesRemovalTransform["transform.DuplicatesRemovalTransform : TextTra
   ~public @NotNull String description();
   +private @NotNull String removeAdjacentDuplicates(@NotNull String input);
 }
+click DuplicatesRemovalTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/DuplicatesRemovalTransform.java"
 class LaTeXEscapesTransform["transform.LaTeXEscapesTransform : TextTransformerDecorator"]{
   +private static final Map<Character, String> latexCharacterMappings;
   +private final boolean latexCharactersAllowed;
@@ -49,6 +48,7 @@ class LaTeXEscapesTransform["transform.LaTeXEscapesTransform : TextTransformerDe
   ~public @NotNull String description();
   +private @NotNull String addLaTeXEscapes();
 }
+click LaTeXEscapesTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/LaTeXEscapesTransform.java"
 class NumberExpansionTransform["NumberExpansionTransform : TextTransformerDecorator"]{
   +private static final Map<Integer, String> DIGITS;
   +private static final Map<Integer, String> TEENS;
@@ -67,6 +67,7 @@ class NumberExpansionTransform["NumberExpansionTransform : TextTransformerDecora
   ~public @NotNull String description();
   +private @NotNull String expandNumbers(@NotNull String s);
 }
+click NumberExpansionTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/NumberExpansionTransform.java"
 class ReverseTransform["ReverseTransform : TextTransformerDecorator"]{
   +private final boolean inverseAllow;
   +public ReverseTransform(@NotNull TextTransformer textToTransform, boolean reversalAllowed);
@@ -74,6 +75,7 @@ class ReverseTransform["ReverseTransform : TextTransformerDecorator"]{
   ~public @NotNull String description();
   +private @NotNull String revertString(@NotNull String input);
 }
+click ReverseTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/ReverseTransform.java"
 class ShortcutTransform["ShortcutTransform : TextTransformerDecorator"]{
   +private final Type shortcutType;
   +private final Map<String, String> shortcutMap;
@@ -84,6 +86,7 @@ class ShortcutTransform["ShortcutTransform : TextTransformerDecorator"]{
   +public @NotNull String applyShortcutModification(@NotNull String inputText);
   +public enum Type;
 }
+click ShortcutTransform href "https://github.com/RubyNaxela/softeng/blob/main/Server/src/main/java/pl/put/poznan/transformer/server/logic/transform/ShortcutTransform.java"
 class Enum1["public enum Type"]{
     +public static Type fromName(@NotNull String name);
     <<enumeration>>
