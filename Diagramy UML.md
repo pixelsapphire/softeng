@@ -4,11 +4,11 @@ title: Diagram Logiki -pl.put.poznan.transformer.server.logic
 ---
 classDiagram
   class TextTransformer{
-    link "./Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java"
     protected String text;
     public @NotNull String getText();
     public abstract @NotNull String transform();
   }
+  link TextTransformer "./Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java"
   class TextClass["TextClass : TextTransformer"] {
     +public TextClass(@NotNull String str);
     ~public @NotNull String transform();
