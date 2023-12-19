@@ -8,7 +8,7 @@ classDiagram
     public @NotNull String getText();
     public abstract @NotNull String transform();
   }
-   // [Link do TextTransformer.java](./Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java)
+   /* [Link do TextTransformer.java](./Server/src/main/java/pl/put/poznan/transformer/server/logic/TextTransformer.java) */
   class TextClass["TextClass : TextTransformer"] {
     +public TextClass(@NotNull String str);
     ~public @NotNull String transform();
