@@ -35,33 +35,6 @@ public class JSONFieldDescription {
     }
 
     /**
-     * Returns the type of the field.
-     *
-     * @return the type of the field
-     */
-    public @NotNull String getType() {
-        return type;
-    }
-
-    /**
-     * Returns the description of the field.
-     *
-     * @return the description of the field
-     */
-    public @NotNull String getDescription() {
-        return description;
-    }
-
-    /**
-     * Returns {@code true} or {@code false}, depending on whether the field is required or not
-     *
-     * @return {@code true} if the field is required, {@code false} otherwise
-     */
-    public boolean isRequired() {
-        return required;
-    }
-
-    /**
      * Escapes the given string for JSON, replacing {@code "} with {@code \"} and {@code \} with {@code \\}.
      *
      * @param s the string to be escaped
