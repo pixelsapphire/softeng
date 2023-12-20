@@ -297,7 +297,50 @@ classDiagram
             +setRequired(boolean required) void;
             +isNotRequired() boolean;
     }
-    ServicesListContent <-- ServiceDescription
+    click ServiceDescription href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/data/ServicesList.java"
+    class RESTController{
+        +getServices(@NotNull URL url) @NotNull String$;
+        +transform(@NotNull URL url, @NotNull TransformRequest request) @NotNull String$;
+    }
+    click RESTController href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/rest/RESTController.java"
+    class  TransformRequest {
+        -final String text;
+        -final Map<@NotNull String, @Nullable Object> transformOperations;
+        +TransformRequest(@NotNull String text);
+        +with(@NotNull String key, @Nullable Object value) TransformRequest;
+        +toString() String;
+        -jsonLiteral(@Nullable Object value) String;
+    }
+    click TransformRequest href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/data/TransformRequest.java"
+    class TransformResponse {
+        -String message, error;
+        +getError() String;
+        +setError(String error) void;
+        +getMessage() String;
+        +setMessage(String message) void;
+    }
+    click TransformResponse href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/data/TransformResponse.java"
+    class HostAndPortSelectPopup {
+        +prompt() @NotNull URL$;
+    }
+    click HostAndPortSelectPopup href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/gui/HostAndPortSelectPopup.java"
+    class ServicesDropdownList["ServicesDropdownList : JComboBox<String>"]{
+         +ServicesDropdownList();
+         +getSelectedService() @Nullable ServiceDescription;
+    }
+    click ServicesDropdownList href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/gui/ServicesDropdownList.java"
+    class WrapLabel["WrapLabel extends JLabel"] {
+        +WrapLabel(@Nullable String text);
+        +setText(@Nullable String text) void;
+    }
+    MainWindow <-- WrapLabel
+    ServicesDropdownList <-- GlobalContext
+    MainWindow <-- ServicesDropdownList
+    MainWindow <-- HostAndPortSelectPopup
+    MainWindow <-- TransformResponse
+    RESTController -- TransformRequest
+    ServicesList <-- RESTController
+    ServicesListContent <-- "internal" ServiceDescription
     ServicesList <-- "internal" ServicesListContent
     GlobalContext <-- ServicesList
     MainWindow <-- GlobalContext
