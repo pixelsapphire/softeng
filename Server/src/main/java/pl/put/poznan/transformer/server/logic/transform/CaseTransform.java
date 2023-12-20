@@ -35,13 +35,13 @@ public class CaseTransform extends TextTransformerDecorator {
     @Override
     public @NotNull String transform() {
         final String transformedText = textToTransform.transform();
-        switch (typeOfTransform) {
-            case UPPER: return transformedText.toUpperCase();
-            case LOWER: return transformedText.toLowerCase();
-            case CAPITALIZE: return caseTransformation(transformedText);
-            case SENTECE_CAPITALIZE: return SentenceCaseTransformation(transformedText);
-            default: return transformedText;
-        }
+        return switch (typeOfTransform) {
+            case UPPER -> transformedText.toUpperCase();
+            case LOWER -> transformedText.toLowerCase();
+            case CAPITALIZE -> caseTransformation(transformedText);
+            case SENTECE_CAPITALIZE -> SentenceCaseTransformation(transformedText);
+            default -> transformedText;
+        };
     }
 
     @Override

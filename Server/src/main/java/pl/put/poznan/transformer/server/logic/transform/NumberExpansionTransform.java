@@ -68,7 +68,7 @@ public class NumberExpansionTransform extends TextTransformerDecorator {
 
         final int remainder = (int) (number % 100);
         if (remainder > 0) {
-            if (result.length() > 0) result.append(" ");
+            if (!result.isEmpty()) result.append(" ");
             if (remainder < 10) result.append(DIGITS.get(remainder));
             else if (remainder < 20) result.append(TEENS.get(remainder - 10));
             else {
