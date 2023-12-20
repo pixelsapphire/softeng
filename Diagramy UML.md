@@ -224,3 +224,84 @@ classDiagram
     TextTransformerServer .. logic
     TextTransformerServer .. TransformsRegister
 ```
+### Diagram Klas Aplikacji dla Klienta -Client/src/main/java/pl.put.poznan.transformer.client
+```mermaid
+classDiagram
+    class TextTransformerClient{
+        +main(String[] args) void$;
+    }
+    click TextTransformerClient href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/TextTransformerClient.java"
+    class Messages{
+        +error(@NotNull String details) void$;
+        +PleaseWaitPopup class$;
+    }
+    click Messages href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/gui/Messages.java"
+    class PleaseWaitPopup["+PleaseWaitPopup$ : JFrame"]{
+        +PleaseWaitPopup();
+    }
+    click PleaseWaitPopup href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/gui/Messages.java"
+    class MainWindow["+MainWindow : JFrame"]{
+        -final JTextArea topTextBox;
+        -final JTextArea bottomTextBox;
+        -ServicesDropdownList serviceDropdown;
+        +MainWindow();
+        -addComponents() void;
+        -addControls(@NotNull JPanel panel) void; 
+        -transformationButton() JButton;
+        -buildTransformRequest(@NotNull ServiceDescription service) @NotNull TransformRequest;
+    }
+    click MainWindow href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/gui/MainWindow.java"
+    class GlobalContext {
+        +final ObjectMapper OBJECT_MAPPER$;
+        -final List<ServiceDescription> availableServices$;
+        -final List<Runnable> updateCallbacks$;
+        -URL selectedURL$;
+        +getURL() URL$;
+        +setURL(@NotNull URL url) void$;
+        +updateServices() void$;
+        +addUpdateListener(@NotNull Runnable listener) void$;
+        +getAvailableServices() @NotNull @UnmodifiableView List<ServiceDescription>$;
+         
+    }
+    click GlobalContext href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/GlobalContext.java"
+    class ServicesList{
+        -String error;
+        -ServicesListContent message;
+        +getError() String;
+        +setError(String error) void;
+        +getMessage() ServicesListContent;
+        +setMessage(ServicesListContent message) void;
+        +ServicesListContent() class$;
+    }
+    click ServicesList href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/data/ServicesList.java"
+    class ServicesListContent {
+        -String header;
+        -List<ServiceDescription> content;
+        +getHeader() String;
+        +setHeader(String header) void;
+        +getContent() List<ServiceDescription>;
+        +setContent(List<ServiceDescription> content) void;
+        +ServiceDescription class$;
+    }
+    click ServicesListContent href "https://github.com/RubyNaxela/softeng/blob/main/Client/src/main/java/pl/put/poznan/transformer/client/data/ServicesList.java"
+    class ServiceDescription {
+            -String name, type, description;
+            -boolean required;
+            +getName() String;
+            +setName(String name) void;
+            +getType() String;
+            +setType(String type) void;
+            +getDescription() String;
+            +setDescription(String description) void;
+            +isRequired() boolean;
+            +setRequired(boolean required) void;
+            +isNotRequired() boolean;
+    }
+    ServicesListContent <-- ServiceDescription
+    ServicesList <-- "internal" ServicesListContent
+    GlobalContext <-- ServicesList
+    MainWindow <-- GlobalContext
+    TextTransformerClient <-- Messages
+    TextTransformerClient <-- MainWindow
+    Messages <-- "internal" PleaseWaitPopup
+```
