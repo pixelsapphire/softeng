@@ -78,19 +78,21 @@ public class CaseTransform extends TextTransformerDecorator {
 
         return result.toString().trim();
     }
-    private @NotNull String SentenceCaseTransformation(@NotNull String text){
+
+    private @NotNull String SentenceCaseTransformation(@NotNull String text) {
         final StringBuilder result = new StringBuilder();
-        boolean dot=true;
-        char[] Chararray=text.toCharArray();
-        int k=Chararray.length;
-        for(int i=0; i<k; i++){
-            if (Character.isLetter(Chararray[i]) && dot){
-                dot=false;
+        boolean dot = true;
+        char[] Chararray = text.toCharArray();
+        int k = Chararray.length;
+        for (int i = 0; i < k; i++) {
+            if (Character.isLetter(Chararray[i]) && dot) {
+                dot = false;
                 result.append(Character.toUpperCase(Chararray[i]));
                 continue;
-            } else if (".!?".contains(String.valueOf(Chararray[i])) && (i+1)<k) {
-                if (Character.isWhitespace(Chararray[i+1])){
-                dot=true;}
+            } else if (".!?".contains(String.valueOf(Chararray[i])) && (i + 1) < k) {
+                if (Character.isWhitespace(Chararray[i + 1])) {
+                    dot = true;
+                }
             }
             result.append(Chararray[i]);
         }
