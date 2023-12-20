@@ -12,7 +12,7 @@ import java.util.Objects;
  * This class represents a request to transform a text. It is constructed using the {@link #with(String, Object)}
  * method. A JSON representation of an object of this class can be obtained using the {@link #toString()} method.
  */
-public class TransformRequest {
+public class  TransformRequest {
 
     private final String text;
     private final Map<@NotNull String, @Nullable Object> transformOperations = new HashMap<>();
